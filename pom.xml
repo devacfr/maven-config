@@ -1,0 +1,1081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.cfr</groupId>
+    <artifactId>maven-config</artifactId>
+    <version>1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>The global maven configuration project</name>
+    <description>
+     
+    </description>
+
+    <prerequisites>
+        <maven>3.0.3</maven>
+    </prerequisites>
+
+    <properties>
+
+        <!-- ================================================================================ -->
+        <!-- Global Properties -->
+        <!-- ================================================================================ -->
+
+        <!-- Disable report aggregation -->
+        <aggregate>false</aggregate>
+
+        <!-- Set default encoding to UTF-8 (most plugins) -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+
+        <!-- Set compiler source and target versions (m-compiler-p) -->
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
+
+        <!-- Set compiler to be more verbose (m-compiler-p) -->
+        <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+        <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+
+        <!-- Disable report when there is no tests (m-surefire-p) -->
+        <alwaysGenerateSurefireReport>false</alwaysGenerateSurefireReport>
+
+        <!-- Shut off non-error and non-warning messages, making them easier 
+            to view (m-javadoc-p) -->
+        <quiet>true</quiet>
+
+        <!-- Disable links detection between modules, it is too slow (m-javadoc-p) -->
+        <detectOfflineLinks>false</detectOfflineLinks>
+
+        <!-- Set target JDK to analyze based on (m-pmd-p) -->
+        <targetJdk>${maven.compiler.target}</targetJdk>
+
+        <!-- Speed-up site generation (m-project-info-reports-p) -->
+        <dependency.locations.enabled>false</dependency.locations.enabled>
+
+        <!-- A comma separated list of locales (m-site-p) -->
+        <locales>en</locales>
+
+        <!-- ================================================================================ -->
+        <!-- POM Specific properties -->
+        <!-- ================================================================================ -->
+
+        <!-- Coporate properties -->
+        <organization.name>Devacfr Corporation :)</organization.name>
+        <organization.url>https://github.com/devacfr</organization.url>
+        <organization.siteUrl>http://www.intranet.pmi</organization.siteUrl>
+        <site.repositoryId>TEST</site.repositoryId>
+        <!-- Configure the url for site deployment -->
+        <!-- See http://books.sonatype.com/mvnref-book/reference/site-generation-sect-deploy-site.html -->
+        <site.repositoryUrl>https://github.com/devacfr/maven-config</site.repositoryUrl>
+
+        <confluence.spaceKey>TEST</confluence.spaceKey>
+        <confluence.endPoint>http://confluence.org/rpc/xmlrpc</confluence.endPoint>
+        <confluence.parentPageTitle>Test Home</confluence.parentPageTitle>
+
+        <!-- Project properties -->
+        <issue.url>https://github.com/devacfr/maven-config/issues</issue.url>
+        <CI.url>https://github.com/devacfr/maven-config</CI.url>
+        <CI.system>Bamboo</CI.system>
+        <CI.contact-admin>bamboo@devacfr.org</CI.contact-admin>
+
+        <main.basedir>${project.basedir}</main.basedir>
+
+        <checkstyle.url>${main.basedir}/conf/checkstyle.xml</checkstyle.url>
+        <pmd.url>${main.basedir}/conf/pmd.xml</pmd.url>
+        <findbugs.exclude-filter>${main.basedir}/conf/findbugs-exclude-filter.xml</findbugs.exclude-filter>
+
+        <!-- ================================================================================ -->
+        <!-- External dependencies versions. -->
+        <!-- ================================================================================ -->
+        <atlassian-events.version>2.3.3</atlassian-events.version>
+        <atlassian-inject.version>1.0.0</atlassian-inject.version>
+        <atlassian-plugins.version>3.0.13</atlassian-plugins.version>
+        <guava.version>13.0.1</guava.version>
+        <commons-io.version>2.1</commons-io.version>
+        <commons-lang.version>2.4</commons-lang.version>
+        <commons-codec.version>1.4</commons-codec.version>
+        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+        <commons-compress.version>1.0</commons-compress.version>
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <joda-time.version>1.6</joda-time.version>
+        <jsr311.version>1.0</jsr311.version>
+        <log4j.version>1.2.14</log4j.version>
+        <restlet.version>2.0.4</restlet.version>
+        <spring.version>3.1.2.RELEASE</spring.version>
+        <servlet.version>2.5</servlet.version>
+        <slf4j.version>1.6.2</slf4j.version>
+        <xerces.version>2.8.1</xerces.version>
+
+        <!-- ================================================================================ -->
+        <!-- Test dependencies version -->
+        <!-- ================================================================================ -->
+        <easymock.version>3.0</easymock.version>
+        <mockito.version>1.8.5</mockito.version>
+        <junit.version>4.8.1</junit.version>
+        <junit-addons.version>1.4</junit-addons.version>
+        <findbugs.version>1.3.7</findbugs.version>
+
+        <!-- ================================================================================ -->
+        <!-- External plugin dependencies versions. -->
+        <!-- ================================================================================ -->
+        <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+        <maven-clean-plugin.version>2.5</maven-clean-plugin.version>
+        <maven-deploy-plugin.version>2.7</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>2.16</maven-failsafe-plugin.version>
+        <maven-install-plugin.version>2.3.1</maven-install-plugin.version>
+        <maven-release-plugin.version>2.4.2</maven-release-plugin.version>
+        <maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
+        <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
+        <maven-site-plugin.version>3.3</maven-site-plugin.version>
+        <maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
+        <maven-build-helper-maven-plugin.version>1.7</maven-build-helper-maven-plugin.version>
+
+        <!-- ================================================================================ -->
+        <!-- Packaging plugins -->
+        <!-- ================================================================================ -->
+        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+        <maven-war-plugin.version>2.4</maven-war-plugin.version>
+
+
+        <!-- ================================================================================ -->
+        <!-- Reporting plugins (only used subset) -->
+        <!-- ================================================================================ -->
+        <maven-checkstyle-plugin.version>2.11</maven-checkstyle-plugin.version>
+        <confluence-reporting-plugin.version>3.4.3</confluence-reporting-plugin.version>
+        <maven-clover2-plugin.version>3.2.2</maven-clover2-plugin.version>
+        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+        <jdepend-maven-plugin.version>2.0-beta-2</jdepend-maven-plugin.version>
+        <findbugs-maven-plugin.version>2.5.2</findbugs-maven-plugin.version>
+        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <maven-pmd-plugin.version>3.0.1</maven-pmd-plugin.version>
+        <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+        <maven-surefire-report-plugin.version>2.16</maven-surefire-report-plugin.version>
+        <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
+
+
+
+    </properties>
+
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>Maven 2.x Public Repository</name>
+            <url>http:/central.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>snapshot</id>
+            <name>Public Snapshots Repository</name>
+            <url>http://repository.apache.org/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <scm>
+        <connection>scm:git:https://github.com/devacfr/maven-config.git</connection>
+        <developerConnection>scm:git:git@github.com/maven-config.git</developerConnection>
+        <url>https://github.com/devacfr/maven-config</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <organization>
+        <name>${organization.name}</name>
+        <url>${organization.url}</url>
+    </organization>
+
+    <issueManagement>
+        <url>${issue.url}</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>${CI.system}</system>
+        <url>${CI.url}</url>
+        <notifiers>
+		<notifier>
+			<type>mail</type>
+			<sendOnError>true</sendOnError>
+			<sendOnFailure>true</sendOnFailure>
+			<sendOnSuccess>false</sendOnSuccess>
+			<sendOnWarning>false</sendOnWarning>
+			<configuration>
+				<address>${CI.contact-admin}</address>
+			</configuration>
+		</notifier>
+	</notifiers>
+    </ciManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>pmi-releases</id>
+            <name>PMI Releases Repository</name>
+            <url>http://pmichneuw01735.pmintl.net:8080/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>pmi-snapshots</id>
+            <name>PMI Snapshots Repository</name>
+            <url>http://pmichneuw01735.pmintl.net:8080/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <site>
+            <id>${site.repositoryId}</id>
+            <url>${site.repositoryUrl}</url>
+        </site>
+    </distributionManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.atlassian.event</groupId>
+                <artifactId>atlassian-event</artifactId>
+                <version>${atlassian-events.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.inject</groupId>
+                <artifactId>atlassian-inject</artifactId>
+                <version>${atlassian-inject.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.plugins</groupId>
+                <artifactId>atlassian-plugins-main</artifactId>
+                <version>${atlassian-plugins.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.plugins</groupId>
+                <artifactId>atlassian-plugins-eventlistener</artifactId>
+                <version>${atlassian-plugins.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>jsr311-api</artifactId>
+                <version>${jsr311.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit-addons</groupId>
+                <artifactId>junit-addons</artifactId>
+                <version>${junit-addons.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>xercesImpl</artifactId>
+                        <groupId>xerces</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>xmlParserAPIs</artifactId>
+                        <groupId>xerces</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>${easymock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymockclassextension</artifactId>
+                <version>${easymock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${findbugs.version}</version>
+                <scope>provided</scope>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <optional>true</optional>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!-- Spring dependency -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-oxm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <!-- Core Plugins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <goals>deploy</goals>
+                    <arguments>-Prelease ${arguments}</arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+            <!-- Packaging plugins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+            </plugin>
+
+            <!-- Reporting plugins (only used subset) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.version}</version>
+                <executions>
+                    <!-- For Maven3 default execution of site:attach-descriptor 
+                        has been removed from the built-in lifecycle bindings for projects with packaging 
+                        "pom". Enable it again. -->
+                    <execution>
+                        <id>attach-descriptor</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- TODO to find solution to use correctly -->
+            <!-- Wait plugin increase capability -->
+            <!-- <plugin> -->
+            <!-- <groupId>org.bsc.maven</groupId> -->
+            <!-- <artifactId>maven-confluence-reporting-plugin</artifactId> -->
+            <!-- <version>${confluence-reporting-plugin.version}</version> -->
+            <!-- <configuration> -->
+            <!-- <endPoint>${confluence.endPoint}</endPoint> -->
+            <!-- <spaceKey>${confluence.spaceKey}</spaceKey> -->
+            <!-- <parentPageTitle>${confluence.parentPageTitle}</parentPageTitle> -->
+            <!-- <title>${project.name}</title> -->
+            <!-- <labels> -->
+            <!-- <label>configuration</label> -->
+            <!-- <label>maven</label> -->
+            <!-- </labels> -->
+            <!-- <templateWiki>${basedir}/src/site/confluence/template.wiki</templateWiki> -->
+            <!-- <wikiFilesExt>.wiki</wikiFilesExt> -->
+            <!-- <serverId>confluence-server-id</serverId> -->
+            <!-- </configuration> -->
+            <!-- <executions> -->
+            <!-- <execution> -->
+            <!-- <id>confluence-summary</id> -->
+            <!-- <goals> -->
+            <!-- <goal>confluence-summary</goal> -->
+            <!-- </goals> -->
+            <!-- </execution> -->
+            <!-- </executions> -->
+            <!-- </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-maven-plugin.version}</version>
+                <configuration>
+                    <!-- Corporate specific rules -->
+                    <threshold>Normal</threshold>
+                    <effort>Default</effort>
+                    <excludeFilterFile>${findbugs.exclude-filter}</excludeFilterFile>
+                    <!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+                    <findbugsXmlOutput>true</findbugsXmlOutput>
+                    <!-- Configures the directory in which the XML report 
+                        is created -->
+                    <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                    <xmlOutput>true</xmlOutput>
+                    <executions>
+                        <!-- Ensures that FindBugs inspects source code when 
+                            project is compiled. -->
+                        <execution>
+                            <id>analyze-compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <!-- Configures the source directory of XML files. -->
+                            <dir>${project.build.directory}/findbugs</dir>
+                            <!-- Configures the directory in which the FindBugs 
+                                report is written. -->
+                            <outputDir>${project.build.directory}/findbugs</outputDir>
+                            <!-- Selects the used stylesheet. -->
+                            <!-- <stylesheet>fancy-hist.xsl</stylesheet> -->
+                            <stylesheet>default.xsl</stylesheet>
+                            <!--<stylesheet>plain.xsl</stylesheet> -->
+                            <!--<stylesheet>fancy.xsl</stylesheet> -->
+                            <!--<stylesheet>summary.xsl</stylesheet> -->
+                            <fileMappers>
+                                <!-- Configures the file extension of the 
+                                    output files. -->
+                                <fileMapper
+                                    implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                    <targetExtension>.html</targetExtension>
+                                </fileMapper>
+                            </fileMappers>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+                <executions>
+                    <!-- Ensures that the XSLT transformation is run when 
+                        the project is compiled. -->
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>findbugs</artifactId>
+                        <version>${findbugs.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+                <configuration>
+                    <showAvatarImages>true</showAvatarImages>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-report-plugin.version}</version>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun-plugin.version}
+                    </version>
+                </plugin>
+
+                <!--This plugin's configuration is used to store Eclipse 
+                    m2e settings only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>xml-maven-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>transform</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>enforce</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>skipTests</id>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
+        <profile>
+            <id>development</id>
+        </profile>
+        <profile>
+            <id>integration</id>
+        </profile>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
+                        <configuration>
+                            <debug>false</debug>
+                            <optimize>true</optimize>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>enforcer-rules</id>
+            <activation>
+                <!-- To disable profile, define property -Dacme-corporate-pom.enforcerRulesDisabled=true -->
+                <property>
+                    <name>!enforcerRulesDisabled</name>
+                </property>
+            </activation>
+
+            <build>
+                <!-- Enforce project settings -->
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>${maven-enforcer-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>enforce-corporate-rules</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireMavenVersion>
+                                            <version>[3.0.3,)</version>
+                                        </requireMavenVersion>
+                                        <requirePluginVersions>
+                                            <message><![CDATA[Found plugins without fixed release version defined, build is not reproducible! Fix all plugin versions.]]></message>
+                                        </requirePluginVersions>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>reporting</id>
+            <reporting>
+                <!-- List of plugins in alphabetical order -->
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-project-info-reports-plugin</artifactId>
+                        <version>${maven-project-info-reports-plugin.version}</version>
+                    </plugin>
+                    <!-- <plugin> -->
+                    <!-- <groupId>org.bsc.maven</groupId> -->
+                    <!-- <artifactId>maven-confluence-reporting-plugin</artifactId> -->
+                    <!-- <version>${confluence-reporting-plugin.version}</version> -->
+                    <!-- </plugin> -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven-checkstyle-plugin}</version>
+                        <configuration>
+                            <!-- Corporate specific rules -->
+                            <configLocation>${checkstyle.url}</configLocation>
+                            <includeResources>false</includeResources>
+                            <includeTestResources>false</includeTestResources>
+                            <excludes>**/src/test/**/*</excludes>
+                            <!-- <headerLocation>etc/checkstyle/java.header</headerLocation> -->
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>non-aggregate</id>
+                                <reports>
+                                    <report>checkstyle</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <reports>
+                                    <report>checkstyle-aggregate</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <configuration>
+                            <!-- Default configuration for all reports -->
+                            <links>
+                                <link>http://docs.oracle.com/javase/6/docs/api/</link>
+                                <link>http://java.sun.com/products/servlet/2.5/docs/servlet-2_5-mr2/</link>
+                            </links>
+                            <detectLinks>true</detectLinks>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>non-aggregate</id>
+                                <configuration>
+                                    <!-- Specific configuration for the non 
+                                        aggregated report -->
+                                </configuration>
+                                <reports>
+                                    <report>javadoc</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <configuration>
+                                    <!-- Specific configuration for the aggregated 
+                                        report -->
+                                </configuration>
+                                <reports>
+                                    <report>aggregate</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <version>${findbugs-maven-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jxr-plugin</artifactId>
+                        <version>${maven-jxr-plugin.version}</version>
+                        <reportSets>
+                            <reportSet>
+                                <id>non-aggregate</id>
+                                <configuration>
+                                    <aggregate>false</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>jxr</report>
+                                    <report>test-jxr</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <configuration>
+                                    <aggregate>true</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>jxr</report>
+                                    <report>test-jxr</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-report-plugin</artifactId>
+                        <version>${maven-surefire-report-plugin.version}</version>
+                        <configuration>
+                            <!-- Combine surefire and failsafe into single 
+                                report. -->
+                            <reportsDirectories>
+                                <reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
+                                <reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
+                            </reportsDirectories>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>non-aggregate</id>
+                                <configuration>
+                                    <aggregate>false</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>report-only</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <configuration>
+                                    <aggregate>true</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>report-only</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <version>${maven-pmd-plugin}</version>
+                        <configuration>
+                            <!-- Corporate specific rules -->
+                            <rulesets>
+                                <ruleset>${pmd.url}</ruleset>
+                            </rulesets>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>non-aggregate</id>
+                                <configuration>
+                                    <aggregate>false</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>cpd</report>
+                                    <report>pmd</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <configuration>
+                                    <aggregate>true</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>cpd</report>
+                                    <report>pmd</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.rat</groupId>
+                        <artifactId>apache-rat-plugin</artifactId>
+                        <version>0.8</version>
+                        <configuration>
+                            <excludeSubProjects>false</excludeSubProjects>
+                            <excludes>
+                                <exclude>.git/**</exclude>
+                                <exclude>**/.*</exclude>
+                                <exclude>**/target/**</exclude>
+                                <exclude>**/site/**</exclude>
+                                <exclude>**/MANIFEST.MF</exclude>
+                                <exclude>**/src/test/**/*.json</exclude>
+                                <exclude>**/src/test/**/*.xml</exclude>
+                                <exclude>**/*.sql</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jdepend-maven-plugin</artifactId>
+                        <version>${jdepend-maven-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>taglist-maven-plugin</artifactId>
+                        <version>${taglist-maven-plugin.version}</version>
+                        <configuration>
+                            <tagListOptions>
+                                <tagClasses>
+                                    <tagClass>
+                                        <displayName>Todo Work</displayName>
+                                        <tags>
+                                            <tag>
+                                                <matchString>todo</matchString>
+                                                <matchType>ignoreCase</matchType>
+                                            </tag>
+                                            <tag>
+                                                <matchString>FIXME</matchString>
+                                                <matchType>exact</matchType>
+                                            </tag>
+                                        </tags>
+                                    </tagClass>
+                                    <tagClass>
+                                        <displayName>Deprecated</displayName>
+                                        <tags>
+                                            <tag>
+                                                <matchString>@deprecated</matchString>
+                                                <matchType>exact</matchType>
+                                            </tag>
+                                        </tags>
+                                    </tagClass>
+                                </tagClasses>
+                            </tagListOptions>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>non-aggregate</id>
+                                <configuration>
+                                    <aggregate>false</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>taglist</report>
+                                </reports>
+                            </reportSet>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <configuration>
+                                    <aggregate>true</aggregate>
+                                </configuration>
+                                <reports>
+                                    <report>taglist</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+        <profile>
+            <id>clover</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.maven.plugins</groupId>
+                        <artifactId>maven-clover2-plugin</artifactId>
+                        <version>${maven-clover2-plugin.version}</version>
+                        <configuration>
+                            <includesTestSourceRoots>false</includesTestSourceRoots>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>main</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>instrument</goal>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>site</id>
+                                <phase>pre-site</phase>
+                                <goals>
+                                    <goal>instrument</goal>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <!-- List of plugins in alphabetical order -->
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.maven.plugins</groupId>
+                        <artifactId>maven-clover2-plugin</artifactId>
+                        <version>${maven-clover2-plugin.version}</version>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+    </profiles>
+</project>
+
