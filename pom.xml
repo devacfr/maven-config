@@ -221,13 +221,13 @@
 
     <distributionManagement>
         <repository>
-            <id>pmi-releases</id>
-            <name>PMI Releases Repository</name>
-            <url>http://pmichneuw01735.pmintl.net:8080/nexus/content/repositories/releases</url>
+            <id>repo-releases</id>
+            <name>Central maven repository</name>
+            <url>http:/central.maven.org/maven2</url>
         </repository>
         <snapshotRepository>
             <id>pmi-snapshots</id>
-            <name>PMI Snapshots Repository</name>
+            <name>Apache Snapshots Repository</name>
             <url>http://pmichneuw01735.pmintl.net:8080/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
         <site>
