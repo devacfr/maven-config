@@ -249,6 +249,13 @@
                 <groupId>com.atlassian.inject</groupId>
                 <artifactId>atlassian-inject</artifactId>
                 <version>${atlassian-inject.version}</version>
+                <exclusions>
+                    <!-- Conflict with guava -->
+                    <exclusion>
+                        <artifactId>google-collections</artifactId>
+                        <groupId>com.google.collections</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.atlassian.plugins</groupId>
