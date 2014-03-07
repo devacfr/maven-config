@@ -254,6 +254,13 @@
                 <groupId>com.atlassian.plugins</groupId>
                 <artifactId>atlassian-plugins-main</artifactId>
                 <version>${atlassian-plugins.version}</version>
+                <exclusions>
+                    <!-- Conflict with guava -->
+                    <exclusion>
+                        <artifactId>google-collections</artifactId>
+                        <groupId>com.google.collections</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.atlassian.plugins</groupId>
