@@ -189,8 +189,8 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
-        <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
+        <connection>scm:git:https://github.com/devacfr/maven-config.git</connection>
+        <developerConnection>scm:git:https://github.com/devacfr/maven-config.git</developerConnection>
         <url>https://github.com/devacfr/maven-config</url>
         <tag>HEAD</tag>
     </scm>
