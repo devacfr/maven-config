@@ -90,8 +90,8 @@
         <!-- Project properties -->
         <issue.url>https://github.com/devacfr/maven-config/issues</issue.url>
         <CI.url>https://github.com/devacfr/maven-config</CI.url>
-        <CI.system>Bamboo</CI.system>
-        <CI.contact-admin>bamboo@devacfr.org</CI.contact-admin>
+        <CI.system>Travis</CI.system>
+        <CI.contact-admin>christophefriederich@mac.om</CI.contact-admin>
 
         <main.basedir>${project.basedir}</main.basedir>
 
