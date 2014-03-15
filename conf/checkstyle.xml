@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Pmi CheckStyle
+    Checkstyle-Configuration: my-checkstyle
     Description: none
 -->
 <module name="Checker">
@@ -109,7 +109,7 @@
     <property name="message" value="Line has trailing spaces."/>
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
-    <module name="Header">
-    <property name="headerFile" value="java.header"/>
+  <module name="Header">
+    <property name="headerFile" value="/Users/devacfr/Development/github/maven-config/conf/java.header"/>
   </module>
 </module>
