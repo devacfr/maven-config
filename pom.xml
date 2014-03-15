@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.cfr</groupId>
@@ -8,9 +9,16 @@
     <packaging>pom</packaging>
 
     <name>The global maven configuration project</name>
-    <description>
-     
-    </description>
+    <description>Global maven configuration based on m4entreprise (https://code.google.com/p/m4enterprise/)</description>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
 
     <prerequisites>
         <maven>3.0.3</maven>
@@ -98,6 +106,7 @@
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <commons-compress.version>1.0</commons-compress.version>
         <commons-collections.version>3.2.1</commons-collections.version>
+        <guice.version>3.0</guice.version>
         <joda-time.version>2.3</joda-time.version>
         <jsr311.version>1.0</jsr311.version>
         <log4j.version>1.2.14</log4j.version>
@@ -175,6 +184,19 @@
             </releases>
         </repository>
         <repository>
+            <id>atlassian-public</id>
+            <url>https://maven.atlassian.com/repository/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
             <id>snapshot</id>
             <name>Public Snapshots Repository</name>
             <url>http://repository.apache.org/snapshots</url>
@@ -188,8 +210,8 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:https://github.com/devacfr/maven-config.git</connection>
-        <developerConnection>scm:git:https://github.com/devacfr/maven-config.git</developerConnection>
+        <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
+        <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
         <url>https://github.com/devacfr/maven-config</url>
         <tag>HEAD</tag>
     </scm>
@@ -302,6 +324,16 @@
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>${guice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.inject.extensions</groupId>
+                <artifactId>guice-multibindings</artifactId>
+                <version>${guice.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.ws.rs</groupId>
@@ -623,7 +655,8 @@
                             <fileMappers>
                                 <!-- Configures the file extension of the 
                                     output files. -->
-                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                <fileMapper
+                                    implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                     <targetExtension>.html</targetExtension>
                                 </fileMapper>
                             </fileMappers>
