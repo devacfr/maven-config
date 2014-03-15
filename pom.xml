@@ -83,6 +83,7 @@
 
         <!-- Maven Deployment -->
         <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <!-- For more see http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
         <github.global.server>github</github.global.server>
         <maven.replository.local>/Users/devacfr/Development/github/mvn-repo</maven.replository.local>
 
@@ -211,6 +212,14 @@
             <releases>
                 <enabled>false</enabled>
             </releases>
+        </repository>
+        <repository>
+            <id>devacfr-mvn-repo</id>
+            <url>https://raw.github.com/devacfr/maven-config/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -563,7 +572,8 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <version>0.9</version>
                 <configuration>
-                    <message>Maven artifacts '${project.groupId}:${project.artifactId}:${project.version}'</message>  <!-- git commit message -->
+                    <message>Maven artifacts
+                        '${project.groupId}:${project.artifactId}:${project.version}'</message>  <!-- git commit message -->
                     <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
                     <outputDirectory>${maven.replository.local}</outputDirectory> <!-- matches distribution management repository url above -->
                     <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
