@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.cfr</groupId>
@@ -72,6 +73,8 @@
         <organization.url>https://github.com/devacfr</organization.url>
         <organization.siteUrl>http://github.com</organization.siteUrl>
 
+        <!-- Disrtibution -->
+        <distribution.url>https://api.bintray.com/maven/devacfr/maven/maven-config</distribution.url>
         <!-- Configure the url for site deployment -->
         <!-- See http://books.sonatype.com/mvnref-book/reference/site-generation-sect-deploy-site.html -->
         <site.repositoryUrl>https://github.com/devacfr/maven-config</site.repositoryUrl>
@@ -81,11 +84,7 @@
         <confluence.endPoint>http://confluence.org/rpc/xmlrpc</confluence.endPoint>
         <confluence.parentPageTitle>Test Home</confluence.parentPageTitle>
 
-        <!-- Maven Deployment -->
-        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
-        <!-- For more see http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
-        <github.global.server>github</github.global.server>
-        <maven.replository.local>/Users/devacfr/Development/github/mvn-repo</maven.replository.local>
+
 
         <!-- Project properties -->
         <issue.url>https://github.com/devacfr/maven-config/issues</issue.url>
@@ -211,9 +210,8 @@
 
     <distributionManagement>
         <repository>
-            <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${maven.replository.local}</url>
+            <id>bintray</id>
+            <url>${distribution.url}</url>
         </repository>
         <site>
             <id>${site.repositoryId}</id>
@@ -456,14 +454,27 @@
             </releases>
         </repository>
         <repository>
-            <id>devacfr-mvn-repo</id>
-            <url>https://raw.github.com/devacfr/maven-config/mvn-repo/</url>
-            <snapshots>
+            <id>bintray</id>
+            <url>http://dl.bintray.com/devacfr/maven</url>
+            <releases>
                 <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray-plugins</name>
+            <url>http://dl.bintray.com/devacfr/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 
     <build>
@@ -512,9 +523,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin.version}</version>
-                <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${maven.replository.local}</altDeploymentRepository>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -532,7 +540,9 @@
                 <version>${maven-release-plugin.version}</version>
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
-                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments>-Prelease ${arguments}</arguments>
                 </configuration>
             </plugin>
             <plugin>
@@ -665,7 +675,8 @@
                             <fileMappers>
                                 <!-- Configures the file extension of the 
                                     output files. -->
-                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                <fileMapper
+                                    implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                     <targetExtension>.html</targetExtension>
                                 </fileMapper>
                             </fileMappers>
@@ -1146,49 +1157,6 @@
                     </plugin>
                 </plugins>
             </reporting>
-        </profile>
-
-        <profile>
-            <id>github-deploy</id>
-            <activation>
-                <!-- To disable profile, define property -DgithubDeployDisabled=true -->
-                <property>
-                    <name>!githubDeployDisabled</name>
-                </property>
-            </activation>
-
-            <build>
-                <plugins>
-                    <!-- Deployment plugins -->
-                    <plugin>
-                        <groupId>com.github.github</groupId>
-                        <artifactId>site-maven-plugin</artifactId>
-                        <version>0.9</version>
-                        <configuration>
-                            <message>Maven artifacts
-                                '${project.groupId}:${project.artifactId}:${project.version}'</message>  <!-- git commit message -->
-                            <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-                            <outputDirectory>${maven.replository.local}</outputDirectory> <!-- matches distribution management repository url above -->
-                            <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                            <repositoryName>maven-config</repositoryName>      <!-- github repo name -->
-                            <repositoryOwner>devacfr</repositoryOwner>    <!-- github username -->
-                        </configuration>
-                        <executions>
-                            <!-- run site-maven-plugin's 'site' target as 
-                                part of the build's normal 'deploy' phase -->
-                            <execution>
-                                <goals>
-                                    <goal>site</goal>
-                                </goals>
-                                <phase>deploy</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 </project>
