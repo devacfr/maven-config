@@ -72,10 +72,11 @@
         <organization.name>Devacfr Corporation :)</organization.name>
         <organization.url>https://github.com/devacfr</organization.url>
         <organization.siteUrl>http://github.com</organization.siteUrl>
-        <site.repositoryId>TEST</site.repositoryId>
+
         <!-- Configure the url for site deployment -->
         <!-- See http://books.sonatype.com/mvnref-book/reference/site-generation-sect-deploy-site.html -->
         <site.repositoryUrl>https://github.com/devacfr/maven-config</site.repositoryUrl>
+        <site.repositoryId>TEST</site.repositoryId>
 
         <confluence.spaceKey>TEST</confluence.spaceKey>
         <confluence.endPoint>http://confluence.org/rpc/xmlrpc</confluence.endPoint>
@@ -566,34 +567,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
             </plugin>
-            <!-- Deployment plugins -->
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.9</version>
-                <configuration>
-                    <message>Maven artifacts
-                        '${project.groupId}:${project.artifactId}:${project.version}'</message>  <!-- git commit message -->
-                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-                    <outputDirectory>${maven.replository.local}</outputDirectory> <!-- matches distribution management repository url above -->
-                    <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
-                    <repositoryName>maven-config</repositoryName>      <!-- github repo name -->
-                    <repositoryOwner>devacfr</repositoryOwner>    <!-- github username -->
-                </configuration>
-                <executions>
-                    <!-- run site-maven-plugin's 'site' target as part of 
-                        the build's normal 'deploy' phase -->
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
-            </plugin>
             <!-- Reporting plugins (only used subset) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -838,7 +811,7 @@
         <profile>
             <id>enforcer-rules</id>
             <activation>
-                <!-- To disable profile, define property -Dacme-corporate-pom.enforcerRulesDisabled=true -->
+                <!-- To disable profile, define property -DenforcerRulesDisabled=true -->
                 <property>
                     <name>!enforcerRulesDisabled</name>
                 </property>
@@ -1176,6 +1149,47 @@
                     </plugin>
                 </plugins>
             </reporting>
+        </profile>
+        <profile>
+            <activation>
+                <!-- To disable profile, define property -DgithubDeployDisabled=true -->
+                <property>
+                    <name>!githubDeployDisabled</name>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <!-- Deployment plugins -->
+                    <plugin>
+                        <groupId>com.github.github</groupId>
+                        <artifactId>site-maven-plugin</artifactId>
+                        <version>0.9</version>
+                        <configuration>
+                            <message>Maven artifacts
+                                '${project.groupId}:${project.artifactId}:${project.version}'</message>  <!-- git commit message -->
+                            <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                            <outputDirectory>${maven.replository.local}</outputDirectory> <!-- matches distribution management repository url above -->
+                            <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <repositoryName>maven-config</repositoryName>      <!-- github repo name -->
+                            <repositoryOwner>devacfr</repositoryOwner>    <!-- github username -->
+                        </configuration>
+                        <executions>
+                            <!-- run site-maven-plugin's 'site' target as 
+                                part of the build's normal 'deploy' phase -->
+                            <execution>
+                                <goals>
+                                    <goal>site</goal>
+                                </goals>
+                                <phase>deploy</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
