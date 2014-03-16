@@ -532,7 +532,9 @@
                 <version>${maven-release-plugin.version}</version>
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
-                    <releaseProfiles>release</releaseProfiles>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <goals>deploy</goals>
+                    <arguments>-Prelease ${arguments}</arguments>
                 </configuration>
             </plugin>
             <plugin>
