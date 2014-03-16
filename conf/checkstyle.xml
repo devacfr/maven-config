@@ -47,11 +47,17 @@
     <module name="ModifierOrder"/>
     <module name="RedundantModifier"/>
     <module name="AvoidNestedBlocks"/>
-    <module name="EmptyBlock"/>
+    <module name="EmptyBlock">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="LeftCurly"/>
     <module name="NeedBraces"/>
     <module name="RightCurly"/>
-    <module name="AvoidInlineConditionals"/>
+    <module name="AvoidInlineConditionals">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="EmptyStatement"/>
     <module name="EqualsHashCode"/>
     <module name="HiddenField">
@@ -60,7 +66,10 @@
     </module>
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
-    <module name="MagicNumber"/>
+    <module name="MagicNumber">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="MissingSwitchDefault"/>
     <module name="RedundantThrows">
       <property name="suppressLoadErrors" value="true"/>
