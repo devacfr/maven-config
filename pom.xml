@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.cfr</groupId>
     <artifactId>maven-config</artifactId>
-    <version>3-SNAPSHOT</version>
+    <version>3</version>
     <packaging>pom</packaging>
 
     <name>The global maven configuration project</name>
@@ -194,7 +193,7 @@
         <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
         <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
         <url>https://github.com/devacfr/maven-config</url>
-        <tag>HEAD</tag>
+        <tag>v3</tag>
     </scm>
 
     <organization>
@@ -691,8 +690,7 @@
                             <fileMappers>
                                 <!-- Configures the file extension of the 
                                     output files. -->
-                                <fileMapper
-                                    implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                     <targetExtension>.html</targetExtension>
                                 </fileMapper>
                             </fileMappers>
