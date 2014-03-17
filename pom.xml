@@ -86,8 +86,6 @@
         <!-- github server corresponds to entry in ~/.m2/settings.xml -->
         <!-- For more see http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
         <github.global.server>github</github.global.server>
-        <!-- disable the deployement on github -->
-        <githubDeployDisabled>true</githubDeployDisabled>
         <distribution.snapshotRepositoryId>internal-repo</distribution.snapshotRepositoryId>
         <distribution.snapshotRepositoryUrl>file:///Users/devacfr/Development/github/mvn-repo</distribution.snapshotRepositoryUrl>
         <!-- Configure the url for site deployment -->
@@ -1180,9 +1178,9 @@
         <profile>
             <id>github-deploy</id>
             <activation>
-                <!-- To disable profile, define property -DgithubDeployDisabled=true -->
+                <!-- To enable profile, define property -DgithubDeployEnabled=true -->
                 <property>
-                    <name>!githubDeployDisabled</name>
+                    <name>githubDeployEnabled</name>
                 </property>
             </activation>
 
