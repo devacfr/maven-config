@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.cfr</groupId>
@@ -72,16 +73,31 @@
         <organization.url>https://github.com/devacfr</organization.url>
         <organization.siteUrl>http://github.com</organization.siteUrl>
 
-        <!-- Configure the url for site deployment -->
-        <!-- See http://books.sonatype.com/mvnref-book/reference/site-generation-sect-deploy-site.html -->
-        <site.repositoryUrl>https://github.com/devacfr/maven-config</site.repositoryUrl>
-        <site.repositoryId>TEST</site.repositoryId>
+
 
         <confluence.spaceKey>TEST</confluence.spaceKey>
         <confluence.endPoint>http://confluence.org/rpc/xmlrpc</confluence.endPoint>
         <confluence.parentPageTitle>Test Home</confluence.parentPageTitle>
 
-        <!-- Maven Deployment -->
+        <!-- Configure Distribution -->
+
+        <distribution.releaseRepositoryId>bintray</distribution.releaseRepositoryId>
+        <distribution.releaseRepositoryUrl>https://api.bintray.com/maven/devacfr/maven/maven-config</distribution.releaseRepositoryUrl>
+        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <!-- For more see http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
+        <github.global.server>github</github.global.server>
+        <!-- disable the deployement on github -->
+        <githubDeployDisabled>true</githubDeployDisabled>
+        <distribution.snapshotRepositoryId>internal-repo</distribution.snapshotRepositoryId>
+        <distribution.snapshotRepositoryUrl>file:///Users/devacfr/Development/github/mvn-repo</distribution.snapshotRepositoryUrl>
+        <!-- Configure the url for site deployment -->
+        <!-- See http://books.sonatype.com/mvnref-book/reference/site-generation-sect-deploy-site.html -->
+        <!-- Disable the site deployment  -->
+        <maven.site.deploy.skip>true</maven.site.deploy.skip>
+        <distribution.siteRepositoryUrl>file:///Users/devacfr/Development/Documentations</distribution.siteRepositoryUrl>
+        <distribution.siteRepositoryId>local-site</distribution.siteRepositoryId>
+
+
         <!-- github server corresponds to entry in ~/.m2/settings.xml -->
         <!-- For more see http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
         <github.global.server>github</github.global.server>
@@ -211,13 +227,16 @@
 
     <distributionManagement>
         <repository>
-            <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${maven.replository.local}</url>
+            <id>${distribution.releaseRepositoryId}</id>
+            <url>${distribution.releaseRepositoryUrl}</url>
         </repository>
+        <snapshotRepository>
+            <id>${distribution.snapshotRepositoryId}</id>
+            <url>${distribution.snapshotRepositoryUrl}</url>
+        </snapshotRepository>
         <site>
-            <id>${site.repositoryId}</id>
-            <url>${site.repositoryUrl}</url>
+            <id>${distribution.siteRepositoryId}</id>
+            <url>${distribution.siteRepositoryUrl}</url>
         </site>
     </distributionManagement>
 
@@ -463,6 +482,16 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
+        <repository>
+            <id>bintray</id>
+            <url>http://dl.bintray.com/devacfr/maven</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
 
@@ -512,9 +541,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin.version}</version>
-                <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${maven.replository.local}</altDeploymentRepository>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -667,7 +693,8 @@
                             <fileMappers>
                                 <!-- Configures the file extension of the 
                                     output files. -->
-                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                <fileMapper
+                                    implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                     <targetExtension>.html</targetExtension>
                                 </fileMapper>
                             </fileMappers>
