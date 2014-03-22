@@ -120,5 +120,6 @@
   </module>
   <module name="Header">
     <property name="headerFile" value="/Users/devacfr/Development/github/maven-config/conf/java.header"/>
+    <property name="ignoreLines" value="2,3"/>
   </module>
 </module>
