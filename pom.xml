@@ -124,7 +124,9 @@
         <commons-compress.version>1.0</commons-compress.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <guice.version>3.0</guice.version>
+        <javax.inject.version>1</javax.inject.version>
         <joda-time.version>2.3</joda-time.version>
+        <jsr250.version>1.0</jsr250.version>
         <jsr311.version>1.0</jsr311.version>
         <log4j.version>1.2.14</log4j.version>
         <restlet.version>2.0.4</restlet.version>
@@ -310,6 +312,16 @@
                 <groupId>com.google.inject.extensions</groupId>
                 <artifactId>guice-multibindings</artifactId>
                 <version>${guice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>jsr250-api</artifactId>
+                <version>${jsr250.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.ws.rs</groupId>
@@ -711,12 +723,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
-                <execution>
-                    <id>attach-javadocs</id>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
-                </execution>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
