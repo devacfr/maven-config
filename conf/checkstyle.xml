@@ -119,7 +119,7 @@
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
   <module name="Header">
-    <property name="headerFile" value="/Users/devacfr/Development/github/maven-config/conf/java.header"/>
+    <property name="headerFile" value="${samedir}/java.header"/>
     <property name="ignoreLines" value="2,3"/>
     <property name="fileExtensions" value="java"/>
   </module>
