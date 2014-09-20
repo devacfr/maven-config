@@ -19,7 +19,7 @@ I tried the site deployment on confluence, but the rendering and customization i
 
 ## Distribution
 
-* Stable version [Release 3](https://bintray.com/devacfr/maven/maven-config/3/view/files/org/cfr/maven-config/3)
+* Stable version [Release 4](https://bintray.com/devacfr/maven/maven-config/4/view/files/org/cfr/maven-config/4)
 
 
 ## Contribution Policy
