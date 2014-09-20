@@ -4,7 +4,7 @@
 
     <groupId>org.cfr</groupId>
     <artifactId>maven-config</artifactId>
-    <version>4</version>
+    <version>5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>The global maven configuration project</name>
@@ -192,7 +192,7 @@
         <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
         <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
         <url>https://github.com/devacfr/maven-config</url>
-        <tag>v4</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <organization>
