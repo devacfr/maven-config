@@ -99,7 +99,7 @@
 
         <site.url>http://devacfr.github.io/maven-config</site.url>
         <site.deploy.id>github</site.deploy.id>
-        <site.deploy.url>http://github.com/devacfr/maven-config/tree/gh-pages/</site.deploy.url>
+        <site.deploy.url>https://github.com/devacfr/maven-config</site.deploy.url>
 
         <github.global.server>github</github.global.server>
 
@@ -167,6 +167,7 @@
         <maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
         <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
         <maven-site-plugin.version>3.3</maven-site-plugin.version>
+        <maven-github-site-maven-plugin.version>0.10</maven-github-site-maven-plugin.version>
         <maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
         <maven-build-helper-maven-plugin.version>1.7</maven-build-helper-maven-plugin.version>
 
@@ -199,7 +200,7 @@
     <scm>
         <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
         <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
-        <url>http://github.com/devacfr/maven-config/tree/master</url>
+        <url>https://github.com/devacfr/maven-config/tree/master</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -1271,12 +1272,11 @@
                             pages -->
                         <groupId>com.github.github</groupId>
                         <artifactId>site-maven-plugin</artifactId>
-                        <version>0.9</version>
+                        <version>${maven-github-site-maven-plugin.version}</version>
                         <configuration>
-                            <message>Creating site for ${project.artifactId}, ${project.version}</message>
+                            <message>Creating site for ${project.artifactId}-${project.version}</message>
                             <!-- this does the trick to place every module 
                                 in the correct subfolder -->
-                            <path>${site.deploy.url}</path>
                             <merge>true</merge>
                         </configuration>
                         <executions>
