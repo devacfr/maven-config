@@ -13,9 +13,6 @@ The project m4entreprise gives some very interesting information and i don't see
 * Create `Reporting` profile to reduce the time of the deployment processing.
 * The deployment of site is disabled by default
 
-###Note
-I tried the site deployment on confluence, but the rendering and customization is poor for the moment (but i don't despair). 
-
 
 ## Distribution
 
