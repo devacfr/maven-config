@@ -8,21 +8,21 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Dependency Information | Reflow Maven Skin</title>
+		<title>Tips | Reflow Maven Skin</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
  
 		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />
-		<link href=".//css/docs.css" rel="stylesheet" />
-		<link href=".//css/reflow-skin.css" rel="stylesheet" />
+		<link href="../css/docs.css" rel="stylesheet" />
+		<link href="../css/reflow-skin.css" rel="stylesheet" />
 
 		<link href="http://yandex.st/highlightjs/7.5/styles/github.min.css" rel="stylesheet" />
 
-		<link href=".//css/lightbox.css" rel="stylesheet" />
+		<link href="../css/lightbox.css" rel="stylesheet" />
 
-		<link href=".//css/site.css" rel="stylesheet" />
-		<link href=".//css/print.css" rel="stylesheet" media="print" />
+		<link href="../css/site.css" rel="stylesheet" />
+		<link href="../css/print.css" rel="stylesheet" media="print" />
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -48,7 +48,7 @@
 		</script>
 		</head>
 
-	<body class="page-dependency-info project-maven-config" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-doc-tips project-maven-config" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -58,23 +58,23 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="./"><span class="color-highlight">Maven</span> Config</a>
+					<a class="brand" href=".."><span class="color-highlight">Maven</span> Config</a>
 					<div class="nav-collapse collapse" id="top-nav-collapse">
 						<ul class="nav pull-right">
 							<li ><a href="https://github.com/devacfr/maven-config/tree/master" title="GitHub project" class="externalLink">GitHub project</a></li>
-							<li class="dropdown">
+							<li class="dropdown active">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li ><a href="doc/index.html" title="Usage">Usage</a></li>
-									<li ><a href="doc/config.html" title="Configuration">Configuration</a></li>
-									<li ><a href="doc/tips.html" title="Tips">Tips</a></li>
+									<li ><a href="index.html" title="Usage">Usage</a></li>
+									<li ><a href="config.html" title="Configuration">Configuration</a></li>
+									<li class="active"><a href="" title="Tips">Tips</a></li>
 								</ul>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contribute <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li ><a href="license.html" title="License">License</a></li>
-									<li ><a href="contribute.html" title="Contribute">Contribute</a></li>
+									<li ><a href="../license.html" title="License">License</a></li>
+									<li ><a href="../contribute.html" title="Contribute">Contribute</a></li>
 									<li ><a href="https://github.com/devacfr/maven-config/issues" title="Issues" class="externalLink">Issues</a></li>
 									<li ><a href="http://github.com/devacfr/maven-config/" title="Fork on GitHub" class="externalLink">Fork on GitHub</a></li>
 								</ul>
@@ -95,7 +95,7 @@
 		<div class="row" id="banner">
 			<div class="span12">
 				<div class="pull-left">
-					<a href="./" id="bannerLeft"><h1><span class="color-highlight">Maven</span> Config</h1></a>
+					<a href="../" id="bannerLeft"><h1><span class="color-highlight">Maven</span> Config</h1></a>
 					<p class="lead">Maven pom default configuration</p>
 				</div>
 				<div class="pull-right">
@@ -105,9 +105,9 @@
 	</div>
 		<div>
 			<ul class="breadcrumb">
-				<li><a href="index.html" title="Maven Config">Maven Config</a></li>
+				<li><a href="../index.html" title="Maven Config">Maven Config</a></li>
 				<li class="divider">/</li>
-				<li>Dependency Information</li>
+				<li>Tips</li>
 			</ul>
 		</div>
 		<hr class="toc-separator" />
@@ -121,21 +121,9 @@
 					</a>
 					<div class="nav-collapse collapse" id="toc-nav-collapse">
 						<ul id="toc" class="nav">
-						<li class="toplevel"><a href="#Dependency_Information" title="Dependency Information">Dependency Information</a></li>
-						<li class="toplevel"><a href="#Apache_Maven" title="Apache Maven">Apache Maven</a></li>
-						<li class="toplevel"><a href="#Apache_Buildr" title="Apache Buildr">Apache Buildr</a></li>
-						<li class="toplevel"><a href="#Apache_Ant" title="Apache Ant">Apache Ant</a></li>
-						<li class="toplevel"><a href="#Groovy_Grape" title="Groovy Grape">Groovy Grape</a></li>
-						<li class="toplevel"><a href="#Grails" title="Grails">Grails</a></li>
-		<li class="divider-vertical"></li>
-		<li class="dropdown">
-			<a href="#" title="More&hellip;" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">&hellip; <b class="caret"></b></a>
-			<ul class="dropdown-menu" role="menu">
-								<li><a href="#Leiningen" title="Leiningen">Leiningen</a></li>
-								<li><a href="#SBT" title="SBT">SBT</a></li>
-
-			</ul>
-		</li>
+						<li class="toplevel"><a href="#tips" title="Tips">Tips</a></li>
+						<li class="toplevel"><a href="#How_do_you_release_locally_offline_" title="How do you release locally (offline) ?">How do you release locally (offline) ?</a></li>
+						<li class="toplevel"><a href="#How_do_you_clean_project_folder_" title="How do you clean project folder ?">How do you clean project folder ?</a></li>
 						</ul>
 					</div>
 				</div>
@@ -147,68 +135,29 @@
 	<div class="row">
 		<div class="span12">
 			<div class="body-content">
+<div class="page-header">
+ <h1 id="tips">Tips</h1>
+</div> 
+<p>This section give tips and good practices on project management.</p> 
 <div class="section"> 
- <div class="page-header">
-  <h2 id="Dependency_Information">Dependency Information</h2>
+ <h2 id="How_do_you_release_locally_offline_">How do you release locally (offline) ?</h2> 
+ <p>Execute maven <tt>release:prepare</tt> goal</p> 
+ <div class="source"> 
+  <pre>mvn release:prepare -DpushChanges=false -DremoteTagging=false
+</pre> 
  </div> 
- <a name="Dependency_Information"></a> 
- <div class="section"> 
-  <h3 id="Apache_Maven">Apache Maven</h3> 
-  <a name="Apache_Maven"></a> 
-  <div class="source"> 
-   <pre>&lt;dependency&gt;
-  &lt;groupId&gt;org.cfr&lt;/groupId&gt;
-  &lt;artifactId&gt;maven-config&lt;/artifactId&gt;
-  &lt;version&gt;5-SNAPSHOT&lt;/version&gt;
-  &lt;type&gt;pom&lt;/type&gt;
-&lt;/dependency&gt;</pre> 
-  </div> 
+ <p>Execute maven <tt>release:perform</tt> goal</p> 
+ <div class="source"> 
+  <pre>mvn release:perform -DlocalCheckout=true
+</pre> 
  </div> 
- <div class="section"> 
-  <h3 id="Apache_Buildr">Apache Buildr</h3> 
-  <a name="Apache_Buildr"></a> 
-  <div class="source"> 
-   <pre>'org.cfr:maven-config:pom:5-SNAPSHOT'</pre> 
-  </div> 
- </div> 
- <div class="section"> 
-  <h3 id="Apache_Ant">Apache Ant</h3> 
-  <a name="Apache_Ant"></a> 
-  <div class="source"> 
-   <pre>&lt;dependency org=&quot;org.cfr&quot; name=&quot;maven-config&quot; rev=&quot;5-SNAPSHOT&quot;&gt;
-  &lt;artifact name=&quot;maven-config&quot; type=&quot;pom&quot; /&gt;
-&lt;/dependency&gt;</pre> 
-  </div> 
- </div> 
- <div class="section"> 
-  <h3 id="Groovy_Grape">Groovy Grape</h3> 
-  <a name="Groovy_Grape"></a> 
-  <div class="source"> 
-   <pre>@Grapes(
-@Grab(group='org.cfr', module='maven-config', version='5-SNAPSHOT')
-)</pre> 
-  </div> 
- </div> 
- <div class="section"> 
-  <h3 id="Grails">Grails</h3> 
-  <a name="Grails"></a> 
-  <div class="source"> 
-   <pre>compile 'org.cfr:maven-config:5-SNAPSHOT'</pre> 
-  </div> 
- </div> 
- <div class="section"> 
-  <h3 id="Leiningen">Leiningen</h3> 
-  <a name="Leiningen"></a> 
-  <div class="source"> 
-   <pre>[org.cfr/maven-config &quot;5-SNAPSHOT&quot;]</pre> 
-  </div> 
- </div> 
- <div class="section"> 
-  <h3 id="SBT">SBT</h3> 
-  <a name="SBT"></a> 
-  <div class="source"> 
-   <pre>libraryDependencies += &quot;org.cfr&quot; %% &quot;maven-config&quot; % &quot;5-SNAPSHOT&quot;</pre> 
-  </div> 
+</div> 
+<div class="section"> 
+ <h2 id="How_do_you_clean_project_folder_">How do you clean project folder ?</h2> 
+ <p>Use git with command <tt>clean</tt></p> 
+ <div class="source"> 
+  <pre>git clean -d -f -x
+</pre> 
  </div> 
 </div>
 			</div>
@@ -227,13 +176,13 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Main</li>
 						<li >
-							<a href="index.html" title="Home">Home</a>
+							<a href="../index.html" title="Home">Home</a>
 						</li>
 						<li >
 							<a href="https://github.com/devacfr/maven-config/tree/master" title="GitHub project" class="externalLink">GitHub project</a>
 						</li>
 						<li >
-							<a href="release-notes.html" title="Release notes">Release notes</a>
+							<a href="../release-notes.html" title="Release notes">Release notes</a>
 						</li>
 					</ul>
 				</div>
@@ -241,10 +190,10 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Contribute</li>
 						<li >
-							<a href="license.html" title="License">License</a>
+							<a href="../license.html" title="License">License</a>
 						</li>
 						<li >
-							<a href="contribute.html" title="Contribute">Contribute</a>
+							<a href="../contribute.html" title="Contribute">Contribute</a>
 						</li>
 						<li >
 							<a href="https://github.com/devacfr/maven-config/issues" title="Issues" class="externalLink">Issues</a>
@@ -258,13 +207,13 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Documentation</li>
 						<li >
-							<a href="doc/index.html" title="Usage">Usage</a>
+							<a href="index.html" title="Usage">Usage</a>
 						</li>
 						<li >
-							<a href="doc/config.html" title="Configuration">Configuration</a>
+							<a href="config.html" title="Configuration">Configuration</a>
 						</li>
-						<li >
-							<a href="doc/tips.html" title="Tips">Tips</a>
+						<li class="active">
+							<a href="#" title="Tips">Tips</a>
 						</li>
 					</ul>
 				</div>
@@ -272,54 +221,10 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Maven documentation</li>
 						<li >
-							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
-							<ul class="nav nav-list">
-						<li >
-							<a href="index.html" title="About">About</a>
+							<a href="../project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
 						</li>
 						<li >
-							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
-						</li>
-						<li >
-							<a href="distribution-management.html" title="Distribution Management">Distribution Management</a>
-						</li>
-						<li class="active">
-							<a href="#" title="Dependency Information">Dependency Information</a>
-						</li>
-						<li >
-							<a href="source-repository.html" title="Source Repository">Source Repository</a>
-						</li>
-						<li >
-							<a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a>
-						</li>
-						<li >
-							<a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>
-						</li>
-						<li >
-							<a href="integration.html" title="Continuous Integration">Continuous Integration</a>
-						</li>
-						<li >
-							<a href="plugins.html" title="Project Plugins">Project Plugins</a>
-						</li>
-						<li >
-							<a href="license.html" title="Project License">Project License</a>
-						</li>
-						<li >
-							<a href="dependency-management.html" title="Dependency Management">Dependency Management</a>
-						</li>
-						<li >
-							<a href="team-list.html" title="Project Team">Project Team</a>
-						</li>
-						<li >
-							<a href="project-summary.html" title="Project Summary">Project Summary</a>
-						</li>
-						<li >
-							<a href="dependencies.html" title="Dependencies">Dependencies</a>
-						</li>
-							</ul>
-						</li>
-						<li >
-							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
+							<a href="../project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
 						</li>
 					</ul>
 				</div>
@@ -347,11 +252,11 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-	<script src=".//js/lightbox.min.js"></script>
-	<script src=".//js/reflow-scroll.js"></script>
+	<script src="../js/lightbox.min.js"></script>
+	<script src="../js/reflow-scroll.js"></script>
 	<script src="http://yandex.st/highlightjs/7.5/highlight.min.js"></script>
 
-	<script src=".//js/reflow-skin.js"></script>
+	<script src="../js/reflow-skin.js"></script>
 
 	</body>
 </html>
