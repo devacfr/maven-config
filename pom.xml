@@ -24,6 +24,11 @@
     <name>The global maven configuration project</name>
     <description>Global maven configuration based on m4entreprise (https://code.google.com/p/m4enterprise/)</description>
 
+
+    <modules>
+        <module>maven-checker</module>
+    </modules>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -42,9 +47,6 @@
         <!-- ================================================================================ -->
         <!-- Global Properties -->
         <!-- ================================================================================ -->
-
-        <!-- Disable report aggregation -->
-        <aggregate>false</aggregate>
 
         <!-- Set default encoding to UTF-8 (most plugins) -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -109,12 +111,7 @@
         <ci.system>Travis</ci.system>
         <ci.contact-admin>christophefriederich@mac.om</ci.contact-admin>
 
-        <main.basedir>${basedir}</main.basedir>
 
-        <checkstyle.url>file:${main.basedir}/conf/checkstyle.xml</checkstyle.url>
-        <checkstyle.header.file>file:${main.basedir}/conf/java.header</checkstyle.header.file>
-        <pmd.url>${main.basedir}/conf/pmd.xml</pmd.url>
-        <findbugs.exclude-filter>${main.basedir}/conf/findbugs-exclude-filter.xml</findbugs.exclude-filter>
 
         <!-- ================================================================================ -->
         <!-- External dependencies versions. -->
@@ -185,7 +182,8 @@
         <!-- ================================================================================ -->
         <maven-reflow-skin.version>1.1.1</maven-reflow-skin.version>
         <maven-cobertura-plugin.version>2.6</maven-cobertura-plugin.version>
-        <maven-checkstyle-plugin.version>2.12.1</maven-checkstyle-plugin.version>
+		<maven-checkstyle-plugin.version>2.11</maven-checkstyle-plugin.version>
+        <maven-clirr-plugin.version>2.6.1</maven-clirr-plugin.version>
         <maven-changes-plugin.version>2.9</maven-changes-plugin.version>
         <maven-clover2-plugin.version>3.2.2</maven-clover2-plugin.version>
         <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
@@ -598,7 +596,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven-resources-plugin.version}</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -641,40 +639,8 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <inputEncoding>UTF-8</inputEncoding>
-                    <outputEncoding>UTF-8</outputEncoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven-checkstyle-plugin.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs-maven-plugin.version}</version>
-                <configuration>
-                    <!-- Corporate specific rules -->
-                    <threshold>Normal</threshold>
-                    <effort>Default</effort>
-                    <excludeFilterFile>${findbugs.exclude-filter}</excludeFilterFile>
-                    <!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
-                    <findbugsXmlOutput>true</findbugsXmlOutput>
-                    <!-- Configures the directory in which the XML report is created -->
-                    <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
-                    <xmlOutput>true</xmlOutput>
-                    <executions>
-                        <!-- Ensures that FindBugs inspects source code when project is compiled. -->
-                        <execution>
-                            <id>analyze-compile</id>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                    <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+                    <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -690,19 +656,11 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>${maven-jxr-plugin.version}</version>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${maven-pmd-plugin.version}</version>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -711,7 +669,6 @@
                     <showAvatarImages>true</showAvatarImages>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
@@ -725,6 +682,93 @@
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>${maven-antrun-plugin.version}
                     </version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>clirr-maven-plugin</artifactId>
+                    <version>${maven-clirr-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                    <configuration>
+                        <!-- Corporate specific rules -->
+                        <configLocation>/devacfr-checkstyle.xml</configLocation>
+                        <includeResources>false</includeResources>
+                        <includeTestResources>false</includeTestResources>
+                        <excludes>**/src/test/**/*</excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.cfr</groupId>
+                            <artifactId>maven-checkers</artifactId>
+                            <version>${project.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>${findbugs-maven-plugin.version}</version>
+                    <configuration>
+                        <!-- Corporate specific rules -->
+                        <threshold>Normal</threshold>
+                        <effort>Default</effort>
+                        <excludeFilterFile>/devacfr-findbugs-exclude-filter.xml</excludeFilterFile>
+                        <!-- Enable XML output for reporting tools (Bamboo, 
+                            Hudson) -->
+                        <findbugsXmlOutput>true</findbugsXmlOutput>
+                        <!-- Configures the directory in which the XML report 
+                            is created -->
+                        <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                        <xmlOutput>true</xmlOutput>
+                        <executions>
+                            <!-- Ensures that FindBugs inspects source code 
+                                when project is compiled. -->
+                            <execution>
+                                <id>analyze-compile</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.cfr</groupId>
+                                <artifactId>maven-checkers</artifactId>
+                                <version>${project.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${maven-pmd-plugin.version}</version>
+                    <configuration>
+                        <!-- Corporate specific rules -->
+                        <rulesets>
+                            <ruleset>devacfr-pmd.xml</ruleset>
+                        </rulesets>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.cfr</groupId>
+                            <artifactId>maven-checkers</artifactId>
+                            <version>${project.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>pl.project13.maven</groupId>
@@ -901,15 +945,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>${maven-checkstyle-plugin}</version>
-                        <configuration>
-                            <!-- Corporate specific rules -->
-                            <configLocation>${checkstyle.url}</configLocation>
-                            <includeResources>false</includeResources>
-                            <includeTestResources>false</includeTestResources>
-                            <excludes>**/src/test/**/*</excludes>
-                            <headerLocation>${checkstyle.header.file}</headerLocation>
-                        </configuration>
+                        <inherited>true</inherited>
                         <reportSets>
                             <reportSet>
                                 <id>non-aggregate</id>
@@ -986,7 +1022,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>findbugs-maven-plugin</artifactId>
-                        <version>${findbugs-maven-plugin.version}</version>
+                        <inherited>true</inherited>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -1053,14 +1089,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
-                        <version>${maven-pmd-plugin}</version>
-                        <configuration>
-                            <!-- Corporate specific rules -->
-                            <rulesets>
-                                <ruleset>${pmd.url}</ruleset>
-                            </rulesets>
-                            <targetJdk>${maven.compiler.target}</targetJdk>
-                        </configuration>
+                        <inherited>true</inherited>
                         <reportSets>
                             <reportSet>
                                 <id>non-aggregate</id>
@@ -1269,8 +1298,10 @@
                         <artifactId>site-maven-plugin</artifactId>
                         <version>${maven-github-site-maven-plugin.version}</version>
                         <configuration>
-                            <message>Creating site for ${project.artifactId}-${project.version}</message>
-                            <!-- this does the trick to place every module in the correct subfolder -->
+                            <message>Creating site for
+                                ${project.artifactId}-${project.version}</message>
+                            <!-- this does the trick to place every module 
+                                in the correct subfolder -->
                             <merge>true</merge>
                         </configuration>
                         <executions>
@@ -1287,5 +1318,6 @@
             </build>
         </profile>
     </profiles>
+
 </project>
 
