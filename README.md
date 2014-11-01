@@ -7,16 +7,14 @@ This pom file structure is based on project [m4entreprise](https://code.google.c
 
 ## Introduction
 
-The project m4entreprise gives some very interesting information and i don't see what I can append anymore. I'm just do:
+This project unifies the dependencies, release , distribution, reporting and code quality management. See [Usage Documentation][github.io-usage] for more detail.
 
-* Add global `dependency management`, constrains coherence in dependency hierarchy ,to exclude automatically  wrong dependency, define default dependency scope,...
-* Create `Reporting` profile to reduce the time of the deployment processing.
-* The deployment of site is disabled by default
 
+[github.io-usage]: http://devacfr.github.io/maven-config/doc/index.html
 
 ## Distribution
 
-* Stable version [Release 4](https://bintray.com/devacfr/maven/maven-config/4/view/files/org/cfr/maven-config/4)
+* Stable version [Release 5](https://bintray.com/devacfr/maven/maven-config/5/view/files/org/cfr/maven-config/5)
 
 
 ## Contribution Policy
