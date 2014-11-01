@@ -14,7 +14,7 @@ This project unifies the dependencies, release , distribution, reporting and cod
 
 ## Distribution
 
-* Stable version [Release 5](https://bintray.com/devacfr/maven/maven-config/5/view/files/org/cfr/maven-config/5)
+* Stable version [Release 6](https://bintray.com/devacfr/maven/maven-config/6/view/files/org/cfr/maven-config/6)
 
 
 ## Contribution Policy
