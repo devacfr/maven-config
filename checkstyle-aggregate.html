@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Project Build Plugins | Maven Config</title>
+		<title>Checkstyle Results | Maven Config</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -48,7 +48,7 @@
 		</script>
 		</head>
 
-	<body class="page-plugins project-maven-config" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-checkstyle-aggregate project-maven-config" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -94,7 +94,7 @@
 											<li ><a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a></li>
 											<li ><a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a></li>
 											<li ><a href="integration.html" title="Continuous Integration">Continuous Integration</a></li>
-											<li class="active"><a href="" title="Project Plugins">Project Plugins</a></li>
+											<li ><a href="plugins.html" title="Project Plugins">Project Plugins</a></li>
 											<li ><a href="license.html" title="Project License">Project License</a></li>
 											<li ><a href="modules.html" title="Project Modules">Project Modules</a></li>
 											<li ><a href="dependency-management.html" title="Dependency Management">Dependency Management</a></li>
@@ -106,7 +106,7 @@
 									<li class="dropdown-submenu ">
 										<a href="project-reports.html" title="Project Reports">Project Reports</a>
 										<ul class="dropdown-menu">
-											<li ><a href="checkstyle-aggregate.html" title="Checkstyle">Checkstyle</a></li>
+											<li class="active"><a href="" title="Checkstyle">Checkstyle</a></li>
 											<li ><a href="github-report.html" title="GitHub Report">GitHub Report</a></li>
 											<li ><a href="rat-report.html" title="RAT Report">RAT Report</a></li>
 										</ul>
@@ -141,7 +141,7 @@
 			<ul class="breadcrumb">
 				<li><a href="index.html" title="Maven Config">Maven Config</a></li>
 				<li class="divider">/</li>
-				<li>Project Build Plugins</li>
+				<li>Checkstyle Results</li>
 			</ul>
 		</div>
 		<hr class="toc-separator" />
@@ -155,9 +155,15 @@
 					</a>
 					<div class="nav-collapse collapse" id="toc-nav-collapse">
 						<ul id="toc" class="nav">
-						<li class="toplevel"><a href="#Project_Build_Plugins" title="Project Build Plugins">Project Build Plugins</a></li>
+						<li class="toplevel"><a href="#Checkstyle_Results" title="Checkstyle Results">Checkstyle Results</a></li>
 						<li class="divider-vertical"></li>
-						<li class="toplevel"><a href="#Project_Report_Plugins" title="Project Report Plugins">Project Report Plugins</a></li>
+						<li class="toplevel"><a href="#Summary" title="Summary">Summary</a></li>
+						<li class="divider-vertical"></li>
+						<li class="toplevel"><a href="#Files" title="Files">Files</a></li>
+						<li class="divider-vertical"></li>
+						<li class="toplevel"><a href="#Rules" title="Rules">Rules</a></li>
+						<li class="divider-vertical"></li>
+						<li class="toplevel"><a href="#Details" title="Details">Details</a></li>
 						</ul>
 					</div>
 				</div>
@@ -171,185 +177,382 @@
 			<div class="body-content">
 <div class="section"> 
  <div class="page-header">
-  <h2 id="Project_Build_Plugins">Project Build Plugins</h2>
+  <h2 id="Checkstyle_Results">Checkstyle Results</h2>
  </div> 
- <a name="Project_Build_Plugins"></a> 
+ <p>The following document contains the results of <a class="externalLink" href="http://checkstyle.sourceforge.net/">Checkstyle</a>.&nbsp;<a href="checkstyle.rss"><img alt="rss feed" src="images/rss.png" /></a></p> 
+</div> 
+<div class="section"> 
+ <h2 id="Summary">Summary</h2> 
  <table border="0" class="bodyTable table table-striped table-hover"> 
   <thead> 
    <tr class="a"> 
-    <th>GroupId</th> 
-    <th>ArtifactId</th> 
-    <th>Version</th> 
+    <th>Files</th> 
+    <th>Infos&nbsp;<i class="icon-info-sign"></i></th> 
+    <th>Warnings&nbsp;<i class="icon-warning-sign"></i></th> 
+    <th>Errors&nbsp;<i class="icon-exclamation-sign"></i></th> 
    </tr> 
   </thead> 
   <tbody> 
    <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-assembly-plugin/">maven-assembly-plugin</a></td> 
-    <td>2.4</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-clean-plugin/">maven-clean-plugin</a></td> 
-    <td>2.5</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-compiler-plugin/">maven-compiler-plugin</a></td> 
-    <td>2.3.2</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-dependency-plugin/">maven-dependency-plugin</a></td> 
-    <td>2.8</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-deploy-plugin/">maven-deploy-plugin</a></td> 
-    <td>2.7</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/enforcer/maven-enforcer-plugin">maven-enforcer-plugin</a></td> 
-    <td>1.3.1</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/surefire/maven-failsafe-plugin">maven-failsafe-plugin</a></td> 
-    <td>2.16</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-install-plugin/">maven-install-plugin</a></td> 
-    <td>2.3.1</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-jar-plugin/">maven-jar-plugin</a></td> 
-    <td>2.4</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-javadoc-plugin/">maven-javadoc-plugin</a></td> 
-    <td>2.9.1</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/jxr/maven-jxr-plugin/">maven-jxr-plugin</a></td> 
-    <td>2.3</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-project-info-reports-plugin/">maven-project-info-reports-plugin</a></td> 
-    <td>2.7</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/maven-release/maven-release-plugin/">maven-release-plugin</a></td> 
-    <td>2.5</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-resources-plugin/">maven-resources-plugin</a></td> 
-    <td>2.4.3</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-site-plugin/">maven-site-plugin</a></td> 
-    <td>3.3</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-source-plugin/">maven-source-plugin</a></td> 
-    <td>2.1.2</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/surefire/maven-surefire-plugin">maven-surefire-plugin</a></td> 
-    <td>2.6</td> 
-   </tr> 
-   <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/surefire/maven-surefire-report-plugin">maven-surefire-report-plugin</a></td> 
-    <td>2.16</td> 
-   </tr> 
-   <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-war-plugin/">maven-war-plugin</a></td> 
-    <td>2.4</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
    </tr> 
   </tbody> 
  </table> 
 </div> 
 <div class="section"> 
- <h2 id="Project_Report_Plugins">Project Report Plugins</h2> 
- <a name="Project_Report_Plugins"></a> 
+ <h2 id="Files">Files</h2> 
  <table border="0" class="bodyTable table table-striped table-hover"> 
   <thead> 
    <tr class="a"> 
-    <th>GroupId</th> 
-    <th>ArtifactId</th> 
-    <th>Version</th> 
+    <th>Files</th> 
+    <th>I&nbsp;<i class="icon-info-sign"></i></th> 
+    <th>W&nbsp;<i class="icon-warning-sign"></i></th> 
+    <th>E&nbsp;<i class="icon-exclamation-sign"></i></th> 
    </tr> 
   </thead> 
   <tbody> 
+  </tbody> 
+ </table> 
+</div> 
+<div class="section"> 
+ <h2 id="Rules">Rules</h2> 
+ <table border="0" class="bodyTable table table-striped table-hover"> 
+  <thead> 
    <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-changes-plugin/">maven-changes-plugin</a></td> 
-    <td>2.9</td> 
+    <th>Rules</th> 
+    <th>Violations</th> 
+    <th>Severity</th> 
+   </tr> 
+  </thead> 
+  <tbody> 
+   <tr class="a"> 
+    <td>JavadocPackage 
+     <ul> 
+      <li><b>allowLegacy</b>: <tt>&quot;true&quot;</tt></li> 
+     </ul></td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>NewlineAtEndOfFile</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-checkstyle-plugin/">maven-checkstyle-plugin</a></td> 
-    <td>2.13</td> 
+    <td>Translation</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-javadoc-plugin/">maven-javadoc-plugin</a></td> 
-    <td>2.9.1</td> 
+    <td>FileLength</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/jxr/maven-jxr-plugin/">maven-jxr-plugin</a></td> 
-    <td>2.3</td> 
+    <td>FileTabCharacter 
+     <ul> 
+      <li><b>eachLine</b>: <tt>&quot;true&quot;</tt></li> 
+     </ul></td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-pmd-plugin/">maven-pmd-plugin</a></td> 
-    <td>3.2</td> 
+    <td>RegexpSingleline 
+     <ul> 
+      <li><b>message</b>: <tt>&quot;Line has trailing spaces.&quot;</tt></li> 
+      <li><b>format</b>: <tt>&quot;\s+$&quot;</tt></li> 
+     </ul></td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="a"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/plugins/maven-project-info-reports-plugin/">maven-project-info-reports-plugin</a></td> 
-    <td>2.7</td> 
+    <td>JavadocMethod</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="b"> 
-    <td>org.apache.maven.plugins</td> 
-    <td><a class="externalLink" href="http://maven.apache.org/surefire/maven-surefire-report-plugin">maven-surefire-report-plugin</a></td> 
-    <td>2.16</td> 
+    <td>JavadocType</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="a"> 
-    <td>org.apache.rat</td> 
-    <td><a class="externalLink" href="http://incubator.apache.org/rat/apache-rat-plugin">apache-rat-plugin</a></td> 
-    <td>0.8</td> 
+    <td>JavadocVariable</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="b"> 
-    <td>org.codehaus.mojo</td> 
-    <td><a class="externalLink" href="http://mojo.codehaus.org/findbugs-maven-plugin">findbugs-maven-plugin</a></td> 
-    <td>3.0.0</td> 
+    <td>JavadocStyle</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="a"> 
-    <td>org.codehaus.mojo</td> 
-    <td><a class="externalLink" href="http://mojo.codehaus.org/jdepend-maven-plugin">jdepend-maven-plugin</a></td> 
-    <td>2.0-beta-2</td> 
+    <td>ConstantName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
    <tr class="b"> 
-    <td>org.codehaus.mojo</td> 
-    <td><a class="externalLink" href="http://mojo.codehaus.org/taglist-maven-plugin">taglist-maven-plugin</a></td> 
-    <td>2.4</td> 
+    <td>LocalFinalVariableName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>LocalVariableName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>MemberName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>MethodName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>PackageName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>ParameterName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>StaticVariableName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>TypeName</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>AvoidStarImport</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>IllegalImport</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>RedundantImport</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>UnusedImports</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>LineLength</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>MethodLength</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>ParameterNumber</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>EmptyForIteratorPad</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>MethodParamPad</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>NoWhitespaceAfter</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>NoWhitespaceBefore</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>OperatorWrap</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>ParenPad</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>TypecastParenPad</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>WhitespaceAfter</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>WhitespaceAround</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>ModifierOrder</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>RedundantModifier</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>AvoidNestedBlocks</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>EmptyBlock</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>LeftCurly</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>NeedBraces</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>RightCurly</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>AvoidInlineConditionals</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>EmptyStatement</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>EqualsHashCode</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>HiddenField</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>IllegalInstantiation</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>InnerAssignment</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>MagicNumber</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>MissingSwitchDefault</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>RedundantThrows</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>SimplifyBooleanExpression</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>SimplifyBooleanReturn</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>DesignForExtension</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>FinalClass</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>HideUtilityClassConstructor</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>InterfaceIsType</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>VisibilityModifier</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>ArrayTypeStyle</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>FinalParameters</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>TodoComment</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>UpperEll</td> 
+    <td>0</td> 
+    <td><i class="icon-exclamation-sign"></i>&nbsp;Error</td> 
    </tr> 
   </tbody> 
  </table> 
+</div> 
+<div class="section"> 
+ <h2 id="Details">Details</h2> 
 </div>
 			</div>
 		</div>
@@ -412,60 +615,21 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Maven documentation</li>
 						<li >
-							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
+							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
+						</li>
+						<li >
+							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-down"></i></a>
 							<ul class="nav nav-list">
-						<li >
-							<a href="index.html" title="About">About</a>
-						</li>
-						<li >
-							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
-						</li>
-						<li >
-							<a href="distribution-management.html" title="Distribution Management">Distribution Management</a>
-						</li>
-						<li >
-							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
-						</li>
-						<li >
-							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
-						</li>
-						<li >
-							<a href="source-repository.html" title="Source Repository">Source Repository</a>
-						</li>
-						<li >
-							<a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a>
-						</li>
-						<li >
-							<a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>
-						</li>
-						<li >
-							<a href="integration.html" title="Continuous Integration">Continuous Integration</a>
-						</li>
 						<li class="active">
-							<a href="#" title="Project Plugins">Project Plugins</a>
+							<a href="#" title="Checkstyle">Checkstyle</a>
 						</li>
 						<li >
-							<a href="license.html" title="Project License">Project License</a>
+							<a href="github-report.html" title="GitHub Report">GitHub Report</a>
 						</li>
 						<li >
-							<a href="modules.html" title="Project Modules">Project Modules</a>
-						</li>
-						<li >
-							<a href="dependency-management.html" title="Dependency Management">Dependency Management</a>
-						</li>
-						<li >
-							<a href="team-list.html" title="Project Team">Project Team</a>
-						</li>
-						<li >
-							<a href="project-summary.html" title="Project Summary">Project Summary</a>
-						</li>
-						<li >
-							<a href="dependencies.html" title="Dependencies">Dependencies</a>
+							<a href="rat-report.html" title="RAT Report">RAT Report</a>
 						</li>
 							</ul>
-						</li>
-						<li >
-							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
 						</li>
 					</ul>
 				</div>
