@@ -38,7 +38,7 @@ This Maven pom releases the project online with Git by default. Each generated t
 
 Using batch mode `--batch-mode` with no other configuration will cause the Release Plugin to use default values for the release version, the SCM tag, and the next development version.
 
-The maven phase `release` appends the profile `release` during the execution changing the compilation configuration as *no debug* and *optimize*.
+The maven phase `release` appends the profile `release` during the execution changing the compilation configuration as *no debug* and *optimize*. The generated artifacts  are deployed on the distribution server and the site with quality code reports is published on github.
 	
 Whether the release failed, you are need rollback a release following action in order. You haven't run `release:clean` on the project before rollback. This means that the backup files and the release descriptor from the previous release command still exists.
 	
