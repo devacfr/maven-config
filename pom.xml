@@ -17,7 +17,7 @@
 
 	<groupId>org.cfr</groupId>
 	<artifactId>maven-config</artifactId>
-	<version>6</version>
+	<version>7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>The global maven configuration project</name>
@@ -203,7 +203,7 @@
 		<connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
 		<developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
 		<url>https://github.com/devacfr/maven-config/tree/master</url>
-		<tag>v6</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<organization>
@@ -713,7 +713,7 @@
 						<dependency>
 							<groupId>org.cfr</groupId>
 							<artifactId>maven-checker</artifactId>
-							<version>6</version>
+							<version>7-SNAPSHOT</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -779,7 +779,7 @@
 						<dependency>
 							<groupId>org.cfr</groupId>
 							<artifactId>maven-checker</artifactId>
-							<version>6</version>
+							<version>7-SNAPSHOT</version>
 						</dependency>
 					</dependencies>
 				</plugin>
