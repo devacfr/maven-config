@@ -82,6 +82,9 @@
       <property name="checkEmptyJavadoc" value="true"/>
     </module>
     <module name="JavadocVariable"/>
+    <module name="JavadocMethod">
+      <property name="suppressLoadErrors" value="true"/>
+    </module>
   </module>
   <module name="SuppressionCommentFilter"/>
   <module name="FileTabCharacter">

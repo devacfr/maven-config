@@ -3,7 +3,7 @@
 
 This section give tips and good practices on project management.
 
-## How do you release locally (offline) ?
+## How do you release locally (offline) with git ?
 
 Execute maven `release:prepare` goal
 
