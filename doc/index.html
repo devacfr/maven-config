@@ -229,7 +229,7 @@ devacfr$ mvm release:perform
 </pre> 
   </div> 
   <p>Using batch mode <tt>--batch-mode</tt> with no other configuration will cause the Release Plugin to use default values for the release version, the SCM tag, and the next development version.</p> 
-  <p>The maven phase <tt>release</tt> appends the profile <tt>release</tt> during the execution changing the compilation configuration as <i>no debug</i> and <i>optimize</i>.</p> 
+  <p>The maven phase <tt>release</tt> appends the profile <tt>release</tt> during the execution changing the compilation configuration as <i>no debug</i> and <i>optimize</i>. The generated artifacts are deployed on the distribution server and the site with quality code reports is published on github.</p> 
   <p>Whether the release failed, you are need rollback a release following action in order. You haven’t run <tt>release:clean</tt> on the project before rollback. This means that the backup files and the release descriptor from the previous release command still exists.</p> 
   <div class="source"> 
    <pre>devacfr$ mvn release:rollback 
@@ -347,7 +347,7 @@ devacfr$ mvm release:perform
 			<div class="span12">
 				<p class="pull-right"><a href="#">Back to top</a></p>
 				<p class="copyright">Copyright &copy;2014 <a href="http://devacfr.github.io">Devacfr Corporation :)</a>. All Rights Reserved.</p>
-				<p class="version-date"><span class="projectVersion">Version: 6-SNAPSHOT. </span><span class="publishDate">Last Published: 2014-11-01. </span></p>
+				<p class="version-date"><span class="projectVersion">Version: 6. </span><span class="publishDate">Last Published: 2014-11-01. </span></p>
 				<p><a href="http://github.com/andriusvelykis/reflow-maven-skin" title="Reflow Maven skin">Reflow Maven skin</a> by <a href="http://andrius.velykis.lt" target="_blank" title="Andrius Velykis">Andrius Velykis</a>.</p>
 			</div>
 		</div>
