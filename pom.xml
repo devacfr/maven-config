@@ -12,7 +12,8 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.cfr</groupId>
@@ -95,14 +96,11 @@
 		<distribution.releaseRepositoryUrl>https://api.bintray.com/maven/devacfr/maven/maven-config</distribution.releaseRepositoryUrl>
 		<distribution.snapshotRepositoryId>internal-repo</distribution.snapshotRepositoryId>
 		<distribution.snapshotRepositoryUrl>file:///Users/devacfr/Development/github/mvn-repo</distribution.snapshotRepositoryUrl>
-		<!-- Configure the url for site deployment -->
-		<!-- See http://books.sonatype.com/mvnref-book/reference/site-generation-sect-deploy-site.html -->
-		<!-- Disable the site deployment -->
-		<maven.site.deploy.skip>true</maven.site.deploy.skip>
+
 
 		<site.url>http://devacfr.github.io/maven-config</site.url>
-		<site.deploy.id>github</site.deploy.id>
-		<site.deploy.url>https://github.com/devacfr/maven-config</site.deploy.url>
+		<site.deploy.id />
+		<site.deploy.url />
 
 		<github.global.server>github</github.global.server>
 
@@ -635,6 +633,11 @@
 						<groupId>org.apache.velocity</groupId>
 						<artifactId>velocity</artifactId>
 						<version>${velocity.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.trajano.wagon</groupId>
+						<artifactId>wagon-git</artifactId>
+						<version>1.0.0</version>
 					</dependency>
 				</dependencies>
 				<configuration>
@@ -1312,29 +1315,53 @@
 					<name>!deployGithubDisabled</name>
 				</property>
 			</activation>
+			<properties>
+				<site.deploy.id>github</site.deploy.id>
+				<site.deploy.url>git:ssh://git@github.com/devacfr/maven-config.git?gh-pages#/</site.deploy.url>
+			</properties>
 			<build>
 				<plugins>
-					<plugin>
-						<!-- GitHub site plug-in for deployment to GitHub pages -->
-						<groupId>com.github.github</groupId>
-						<artifactId>site-maven-plugin</artifactId>
-						<version>${maven-github-site-maven-plugin.version}</version>
-						<configuration>
-							<message>Deployment site for
-								${project.artifactId}-${project.version}</message>
-							<!-- this does the trick to place every module in the correct subfolder -->
-							<merge>true</merge>
-						</configuration>
-						<executions>
-							<execution>
-								<id>github-site</id>
-								<goals>
-									<goal>site</goal>
-								</goals>
-								<phase>site-deploy</phase>
-							</execution>
-						</executions>
-					</plugin>
+					<!-- Configure Maven site plugin to perform stage -->
+<!-- 					<plugin> -->
+<!-- 						<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 						<artifactId>maven-site-plugin</artifactId> -->
+<!-- 						<version>${maven-site-plugin.version}</version> -->
+<!-- 						<configuration> -->
+<!-- 							Site deployment done using GitHub site plugin -->
+<!-- 							<skipDeploy>true</skipDeploy> -->
+<!-- 						</configuration> -->
+<!-- 						<executions> -->
+<!-- 							<execution> -->
+<!-- 								<id>stage</id> -->
+<!-- 								<goals> -->
+<!-- 									<goal>stage</goal> -->
+<!-- 								</goals> -->
+<!-- 								<phase>site</phase> -->
+<!-- 							</execution> -->
+<!-- 						</executions> -->
+<!-- 					</plugin> -->
+<!-- 					<plugin> -->
+<!-- 						GitHub site plug-in for deployment to GitHub pages -->
+<!-- 						<groupId>com.github.github</groupId> -->
+<!-- 						<artifactId>site-maven-plugin</artifactId> -->
+<!-- 						<version>${maven-github-site-maven-plugin.version}</version> -->
+<!-- 						<configuration> -->
+<!-- 							<message>Deployment site for -->
+<!-- 								${project.artifactId}-${project.version}</message> -->
+<!-- 							this does the trick to place every module in the correct subfolder -->
+<!-- 							<path>${project.distributionManagement.site.url}</path> -->
+<!-- 							<merge>true</merge> -->
+<!-- 						</configuration> -->
+<!-- 						<executions> -->
+<!-- 							<execution> -->
+<!-- 								<id>github-site</id> -->
+<!-- 								<goals> -->
+<!-- 									<goal>site</goal> -->
+<!-- 								</goals> -->
+<!-- 								<phase>site-deploy</phase> -->
+<!-- 							</execution> -->
+<!-- 						</executions> -->
+<!-- 					</plugin> -->
 				</plugins>
 			</build>
 		</profile>
