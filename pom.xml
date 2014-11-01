@@ -48,6 +48,10 @@
 		<!-- Global Properties -->
 		<!-- ================================================================================ -->
 
+		<!-- Disable report aggregation -->
+		<aggregate>false</aggregate>
+
+
 		<!-- Set default encoding to UTF-8 (most plugins) -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
@@ -190,6 +194,7 @@
 		<findbugs-maven-plugin.version>3.0.0</findbugs-maven-plugin.version>
 		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
 		<maven-pmd-plugin.version>3.2</maven-pmd-plugin.version>
+		<maven-rat-plugin.version>0.8</maven-rat-plugin.version>
 		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
 		<maven-surefire-report-plugin.version>2.16</maven-surefire-report-plugin.version>
 		<taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
@@ -755,20 +760,20 @@
 						<minimumTokens>30</minimumTokens>
 						<targetJdk>${compiler.target}</targetJdk>
 						<failOnViolation>false</failOnViolation>
-                        <!-- TODO make it 'true' when we will be ready -->
-                        <failurePriority>2</failurePriority>
+						<!-- TODO make it 'true' when we will be ready -->
+						<failurePriority>2</failurePriority>
 						<rulesets>
 							<ruleset>/devacfr-pmd.xml</ruleset>
 						</rulesets>
 					</configuration>
 					<executions>
-                        <execution>
-                            <phase>process-sources</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+						<execution>
+							<phase>process-sources</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
 					<dependencies>
 						<dependency>
 							<groupId>org.cfr</groupId>
@@ -982,7 +987,6 @@
 							</reportSet>
 							<reportSet>
 								<id>aggregate</id>
-								<inherited>false</inherited>
 								<reports>
 									<report>checkstyle-aggregate</report>
 								</reports>
@@ -1027,19 +1031,12 @@
 						<reportSets>
 							<reportSet>
 								<id>non-aggregate</id>
-								<configuration>
-									<!-- Specific configuration for the non aggregated report -->
-								</configuration>
 								<reports>
 									<report>javadoc</report>
 								</reports>
 							</reportSet>
 							<reportSet>
 								<id>aggregate</id>
-								<inherited>false</inherited>
-								<configuration>
-									<!-- Specific configuration for the aggregated report -->
-								</configuration>
 								<reports>
 									<report>aggregate</report>
 								</reports>
@@ -1068,7 +1065,6 @@
 							</reportSet>
 							<reportSet>
 								<id>aggregate</id>
-								<inherited>false</inherited>
 								<configuration>
 									<aggregate>true</aggregate>
 								</configuration>
@@ -1103,7 +1099,6 @@
 							</reportSet>
 							<reportSet>
 								<id>aggregate</id>
-								<inherited>false</inherited>
 								<configuration>
 									<aggregate>true</aggregate>
 								</configuration>
@@ -1130,7 +1125,6 @@
 							</reportSet>
 							<reportSet>
 								<id>aggregate</id>
-								<inherited>false</inherited>
 								<configuration>
 									<aggregate>true</aggregate>
 								</configuration>
@@ -1141,16 +1135,18 @@
 							</reportSet>
 						</reportSets>
 					</plugin>
-
 					<plugin>
 						<groupId>org.apache.rat</groupId>
 						<artifactId>apache-rat-plugin</artifactId>
-						<version>0.8</version>
+						<version>${maven-rat-plugin.version}</version>
 						<configuration>
 							<excludeSubProjects>false</excludeSubProjects>
+							<useEclipseDefaultExcludes>true</useEclipseDefaultExcludes>
+							<useMavenDefaultExcludes>true</useMavenDefaultExcludes>
 							<excludes>
 								<exclude>.git/**</exclude>
 								<exclude>**/.*</exclude>
+								<exclude>**/.settings/**</exclude>
 								<exclude>**/target/**</exclude>
 								<exclude>**/site/**</exclude>
 								<exclude>**/MANIFEST.MF</exclude>
@@ -1325,7 +1321,7 @@
 						<artifactId>site-maven-plugin</artifactId>
 						<version>${maven-github-site-maven-plugin.version}</version>
 						<configuration>
-							<message>Creating site for
+							<message>Deployment site for
 								${project.artifactId}-${project.version}</message>
 							<!-- this does the trick to place every module in the correct subfolder -->
 							<merge>true</merge>
