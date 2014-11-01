@@ -586,8 +586,8 @@
 				<configuration>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<useReleaseProfile>false</useReleaseProfile>
-					<goals>deploy</goals>
-					<arguments>-Prelease ${arguments}</arguments>
+					<goals>deploy site-deploy</goals>
+					<arguments>-Prelease,reporting ${arguments}</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
