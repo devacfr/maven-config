@@ -5,6 +5,19 @@ The history of Maven config releases is documented below. For details of changes
 [maven-config-issues]: http://github.com/devacfr/maven-config/issues?state=closed
 [github-report]: github-report.html
 
+## Release 6
+
+###Enhancement
+- Add site deploy during release phase
+
+### Bug fix
+- Fix deployment multi-module site on github ([&#35;8][issue-8])
+	- Replace github:site-maven-plugin by wagon-git
+- Remove deploy skip for maven-checker module ([&#35;7][issue-7])
+
+[issue-7]: https://github.com/devacfr/maven-config/issues/7
+[issue-8]: https://github.com/devacfr/maven-config/issues/8
+
 ## Release 5
 
 ### Enhancement

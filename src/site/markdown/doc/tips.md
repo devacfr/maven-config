@@ -5,16 +5,28 @@ This section give tips and good practices on project management.
 
 ## How do you release locally (offline) with git ?
 
-Execute maven `release:prepare` goal
+Execute Maven `release:prepare` goal
 
-	mvn release:prepare -DpushChanges=false -DremoteTagging=false
+```bash
+mvn release:prepare -DpushChanges=false -DremoteTagging=false
+```
 
-Execute maven `release:perform` goal
+* `pushChanges` parameter allows pushing changes using the local instead the upstream repository.
+* `remotingTagging` parameter doesn't explicit in release plugin document, but prevents the duplicate tagging while you need execute prepare goal once again after failure.
 
-	mvn release:perform -DlocalCheckout=true
-	
+Execute Maven `release:perform` goal
+
+```bash
+mvn release:perform -DlocalCheckout=true
+```	
+
+The `localCheckout` parameter allows using a local checkout instead of doing a checkout from the upstream repository.
+
 ## How do you clean project folder ?
  
-Use git with command `clean`
+Use Git with command `clean`.
 
-	git clean -d -f -x
+```bash
+git clean -xdf
+```
+This command removes all untracked files.

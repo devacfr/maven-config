@@ -133,8 +133,7 @@
             <item name="Release notes" href="release-notes.html" />
         </menu>
         <menu name="Documentation" inherit="bottom">
-            <item name="Usage" href="doc/index.html" />
-            <item name="Configuration" href="doc/config.html" />
+            <item name="Configuration &amp; Usage Documentation" href="doc/index.html" />
             <item name="Tips" href="doc/tips.html" />
         </menu>
         <menu name="Contribute" inherit="bottom">

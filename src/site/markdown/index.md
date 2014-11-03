@@ -1,22 +1,8 @@
 ## Get it now
 
-To use Maven Config in your Maven project site, add it to pom.xml:
-
-```xml
-<parent>
-    <groupId>org.cfr</groupId>
-    <artifactId>maven-config</artifactId>
-    <version>5</version>
-</parent>
-```
-
-[Full usage instructions &raquo;][maven-config-usage]
-
-[maven-config-usage]: doc/index.html
-
+To use Maven Config in a Maven project site, See [Full Configuration & Usage Instructions &raquo;][maven-config-usage]
 
 ---
-
 
 ### About
 
@@ -28,6 +14,7 @@ The code is [open source][maven-config-github] and licensed under [Apache licens
 Git repository on GitHub and adding some good code!
 
 
+[maven-config-usage]: doc/index.html
 [m4entreprise]:https://code.google.com/p/m4enterprise/
 [apache-license]: http://www.apache.org/licenses/LICENSE-2.0
 [contribute]: contribute.html
