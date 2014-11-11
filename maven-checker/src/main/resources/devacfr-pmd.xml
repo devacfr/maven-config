@@ -281,9 +281,6 @@
     <rule ref="rulesets/java/design.xml/UnnecessaryLocalBeforeReturn">
         <priority>4</priority>
     </rule>
-    <rule ref="rulesets/java/optimizations.xml/AvoidInstantiatingObjectsInLoops">
-        <priority>4</priority>
-    </rule>
     <rule ref="rulesets/java/imports.xml/DontImportJavaLang">
         <priority>4</priority>
     </rule>
