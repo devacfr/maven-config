@@ -29,9 +29,6 @@
     <rule ref="rulesets/java/design.xml/AvoidProtectedFieldInFinalClass">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingRawExceptionTypes">
-        <priority>3</priority>
-    </rule>
     <rule ref="rulesets/java/codesize.xml/CyclomaticComplexity">
         <priority>2</priority>
         <properties>
@@ -39,9 +36,6 @@
         </properties>
     </rule>
     <rule ref="rulesets/java/controversial.xml/DoNotCallGarbageCollectionExplicitly">
-        <priority>3</priority>
-    </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyCatchBlock">
         <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/basic.xml/EmptyFinallyBlock">
