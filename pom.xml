@@ -117,9 +117,6 @@
         <!-- ================================================================================ -->
         <!-- External dependencies versions. -->
         <!-- ================================================================================ -->
-        <atlassian-events.version>2.3.3</atlassian-events.version>
-        <atlassian-inject.version>1.0.0</atlassian-inject.version>
-        <atlassian-plugins.version>3.0.13</atlassian-plugins.version>
         <guava.version>18.0</guava.version>
         <commons-io.version>2.1</commons-io.version>
         <commons-lang.version>2.4</commons-lang.version>
@@ -260,40 +257,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.atlassian.event</groupId>
-                <artifactId>atlassian-event</artifactId>
-                <version>${atlassian-events.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.atlassian.inject</groupId>
-                <artifactId>atlassian-inject</artifactId>
-                <version>${atlassian-inject.version}</version>
-                <exclusions>
-                    <!-- Conflict with guava -->
-                    <exclusion>
-                        <artifactId>google-collections</artifactId>
-                        <groupId>com.google.collections</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.atlassian.plugins</groupId>
-                <artifactId>atlassian-plugins-main</artifactId>
-                <version>${atlassian-plugins.version}</version>
-                <exclusions>
-                    <!-- Conflict with guava -->
-                    <exclusion>
-                        <artifactId>google-collections</artifactId>
-                        <groupId>com.google.collections</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.atlassian.plugins</groupId>
-                <artifactId>atlassian-plugins-eventlistener</artifactId>
-                <version>${atlassian-plugins.version}</version>
-            </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
@@ -490,19 +453,6 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>atlassian-public</id>
-            <url>https://maven.atlassian.com/repository/public</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
             </releases>
         </repository>
         <repository>
