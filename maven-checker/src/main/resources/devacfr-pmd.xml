@@ -47,9 +47,6 @@
     <rule ref="rulesets/java/basic.xml/EmptyFinallyBlock">
         <priority>1</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyIfStmt">
-        <priority>3</priority>
-    </rule>
     <rule ref="rulesets/java/codesize.xml/ExcessiveClassLength">
         <priority>3</priority>
     </rule>
@@ -173,9 +170,6 @@
     <rule ref="rulesets/java/basic.xml/UnconditionalIfStatement">
         <priority>1</priority>
     </rule>
-    <rule ref="rulesets/java/j2ee.xml/UseProperClassLoader">
-        <priority>1</priority>
-    </rule>
     <rule ref="rulesets/java/basic.xml/UselessOperationOnImmutable">
         <priority>1</priority>
     </rule>
@@ -202,9 +196,6 @@
     </rule>
     <rule ref="rulesets/java/logging-java.xml/SystemPrintln">
         <priority>1</priority>
-    </rule>
-    <rule ref="rulesets/java/controversial.xml/AssignmentInOperand">
-        <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/optimizations.xml/AddEmptyString">
         <priority>1</priority>
@@ -239,9 +230,6 @@
     <rule ref="rulesets/java/basic.xml/AvoidThreadGroup">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingGenericException">
-        <priority>3</priority>
-    </rule>
     <rule ref="rulesets/java/strictexception.xml/AvoidLosingExceptionInformation">
         <priority>3</priority>
     </rule>
@@ -268,9 +256,6 @@
     </rule>
     <rule ref="rulesets/java/optimizations.xml/UseArrayListInsteadOfVector">
         <priority>3</priority>
-    </rule>
-    <rule ref="rulesets/java/optimizations.xml/UseStringBufferForStringAppends">
-        <priority>4</priority>
     </rule>
     <rule ref="rulesets/java/design.xml/UnnecessaryLocalBeforeReturn">
         <priority>4</priority>
