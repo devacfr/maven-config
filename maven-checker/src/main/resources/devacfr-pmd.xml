@@ -62,12 +62,6 @@
     <rule ref="rulesets/java/migrating.xml/AvoidEnumAsIdentifier">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingNPE">
-        <priority>3</priority>
-    </rule>
-    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingThrowable">
-        <priority>3</priority>
-    </rule>
     <rule ref="rulesets/java/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor">
         <priority>3</priority>
     </rule>
