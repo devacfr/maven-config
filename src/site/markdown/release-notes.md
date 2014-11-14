@@ -5,6 +5,24 @@ The history of Maven config releases is documented below. For details of changes
 [maven-config-issues]: http://github.com/devacfr/maven-config/issues?state=closed
 [github-report]: github-report.html
 
+## Release 7
+
+### Enhancement
+- Bundle up Legal resources as a remote-resource. ([&#35;9][issue-9])
+- Guava upgrade to 18.0
+
+
+### Maintenance 
+- Remove Repositories reference from maven-config Pom's ([&#35;10][issue-10])
+- Remove unnecessary PMD rules
+- Remove Atlassian dependencies
+- Enforce using m2e-code-quality extension in Eclipse
+
+
+
+[issue-9]: https://github.com/devacfr/maven-config/issues/9
+[issue-10]: https://github.com/devacfr/maven-config/issues/10
+
 ## Release 6
 
 ###Enhancement
