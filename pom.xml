@@ -68,8 +68,7 @@
         <!-- Disable report when there is no tests (m-surefire-p) -->
         <alwaysGenerateSurefireReport>false</alwaysGenerateSurefireReport>
 
-        <!-- Shut off non-error and non-warning messages, making them easier 
-            to view (m-javadoc-p) -->
+        <!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
         <quiet>true</quiet>
 
         <!-- Disable links detection between modules, it is too slow (m-javadoc-p) -->
@@ -174,6 +173,7 @@
         <!-- ================================================================================ -->
         <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
+        <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 
 
         <!-- ================================================================================ -->
@@ -443,42 +443,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>public</id>
-            <name>Maven 2.x Public Repository</name>
-            <url>http:/central.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>snapshot</id>
-            <name>Public Snapshots Repository</name>
-            <url>http://repository.apache.org/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>bintray</id>
-            <url>http://dl.bintray.com/devacfr/maven</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-
     <build>
         <plugins>
             <!-- Core Plugins -->
@@ -685,16 +649,13 @@
                         <threshold>Normal</threshold>
                         <effort>Default</effort>
                         <excludeFilterFile>/devacfr-findbugs-exclude-filter.xml</excludeFilterFile>
-                        <!-- Enable XML output for reporting tools (Bamboo, 
-                            Hudson) -->
+                        <!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
                         <findbugsXmlOutput>true</findbugsXmlOutput>
-                        <!-- Configures the directory in which the XML report 
-                            is created -->
+                        <!-- Configures the directory in which the XML report is created -->
                         <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
                         <xmlOutput>true</xmlOutput>
                         <executions>
-                            <!-- Ensures that FindBugs inspects source code 
-                                when project is compiled. -->
+                            <!-- Ensures that FindBugs inspects source code when project is compiled. -->
                             <execution>
                                 <id>analyze-compile</id>
                                 <phase>compile</phase>
@@ -744,6 +705,24 @@
                         </dependency>
                     </dependencies>
                 </plugin>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-gpg-plugin</artifactId>
+                            <version>${maven-gpg-plugin.version}</version>
+                        </plugin>
+                        <executions>
+                            <execution>
+                                <id>sign</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugins>
+                </pluginManagement>
                 <plugin>
                     <groupId>pl.project13.maven</groupId>
                     <artifactId>git-commit-id-plugin</artifactId>
@@ -764,20 +743,16 @@
                         <gitDescribe>
                             <!-- don't generate the describe property -->
                             <!-- <skip>false</skip> -->
-                            <!-- if no tag was found "near" this commit, 
-                                just print the commit's id instead, helpful when you always expect this field 
-                                to be not-empty -->
+                            <!-- if no tag was found "near" this commit, just print the commit's id instead, helpful when 
+                                you always expect this field to be not-empty -->
                             <always>true</always>
-                            <!-- how many chars should be displayed as the 
-                                commit object id? 7 is git's default, 0 has a special meaning (see end of 
-                                this README.md), and 40 is the maximum value here -->
+                            <!-- how many chars should be displayed as the commit object id? 7 is git's default, 0 has a 
+                                special meaning (see end of this README.md), and 40 is the maximum value here -->
                             <abbrev>7</abbrev>
-                            <!-- when the build is triggered while the repo 
-                                is in "dirty state", append this suffix -->
+                            <!-- when the build is triggered while the repo is in "dirty state", append this suffix -->
                             <dirty />
-                            <!-- always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" 
-                                format, even if "on" a tag. The distance will always be 0 if you're "on" 
-                                the tag. -->
+                            <!-- always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" format, even if "on" 
+                                a tag. The distance will always be 0 if you're "on" the tag. -->
                             <forceLongFormat>false</forceLongFormat>
                         </gitDescribe>
                     </configuration>
@@ -793,8 +768,8 @@
                         </resourceBundles>
                     </configuration>
                 </plugin>
-                <!--This plugin's configuration is used to store Eclipse 
-                    m2e settings only. It has no influence on the Maven build itself. -->
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven 
+                    build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -1108,8 +1083,7 @@
                         <artifactId>maven-surefire-report-plugin</artifactId>
                         <version>${maven-surefire-report-plugin.version}</version>
                         <configuration>
-                            <!-- Combine surefire and failsafe into single 
-                                report. -->
+                            <!-- Combine surefire and failsafe into single report. -->
                             <reportsDirectories>
                                 <reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
                                 <reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
@@ -1345,6 +1319,23 @@
                 <site.deploy.id>github</site.deploy.id>
                 <site.deploy.url>git:ssh://git@github.com/devacfr/maven-config.git?gh-pages#/</site.deploy.url>
             </properties>
+        </profile>
+        <profile>
+            <id>gpg</id>
+            <activation>
+                <!-- To enable gpg  signature profile, define property -Dgpg.passphrase=phrase -->
+                <property>
+                    <name>gpg.passphrase</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 

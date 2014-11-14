@@ -6,8 +6,43 @@ This is a parent POM of all [devacfr][devacfr] projects. To use this predefined 
 <parent>
     <groupId>org.cfr</groupId>
     <artifactId>maven-config</artifactId>
-    <version>6</version>
+    <version>7</version>
 </parent>
+```
+
+Declare the repository for your project or for a parent project by updating the pom.xml file and adding the following code to the `<repositories>` section:
+
+```xml
+<repository>
+    <snapshots>
+        <enabled>false</enabled>
+    </snapshots>
+    <id>jcenter</id>
+    <name>JCenter Repository</name>
+    <url>http://jcenter.bintray.com</url>
+</repository>
+```
+As an alternative, you can also declare the repository for all of your projects. Go to the directory on the local computer where you just install Maven. Open and edit `conf/settings.xml` file. Add to the <profiles> section the following code:
+
+```xml
+<profiles>
+    <profile>
+        <id>jcenter</id>
+        <repositories>
+            <repository>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+                <id>jcenter</id>
+                <name>JCenter Repository</name>
+                <url>http://jcenter.bintray.com</url>
+            </repository>
+        </repositories>
+    </profile>
+</profiles>
+<activeProfiles>
+    <activeProfile>jcenter</activeProfile>
+</activeProfiles>
 ```
 
 ## Reporting Configuration
@@ -131,4 +166,5 @@ devacfr$ mvn site-deploy -Preporting
 [devacfr]: http://devacfr.github.io/
 [reflow-home]: http://andriusvelykis.github.io/reflow-maven-skin/
 [reflow-usage]: http://andriusvelykis.github.io/reflow-maven-skin/skin/
+[jcenter]:http://jcenter.bintray.com
 
