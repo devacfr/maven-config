@@ -40,11 +40,11 @@
 
 
 	<prerequisites>
-		<maven>3.0.3</maven>
+		<maven>${maven.version}</maven>
 	</prerequisites>
 
 	<properties>
-
+		
 		<!-- ================================================================================ -->
 		<!-- Global Properties -->
 		<!-- ================================================================================ -->
@@ -52,7 +52,8 @@
 		<!-- Disable report aggregation -->
 		<aggregate>false</aggregate>
 
-
+		<!-- minimum maven required version -->
+		<maven.version>3.2.5</maven>
 		<!-- Set default encoding to UTF-8 (most plugins) -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
@@ -939,7 +940,7 @@
 								<configuration>
 									<rules>
 										<requireMavenVersion>
-											<version>[3.0.3,)</version>
+											<version>[3.2.5,)</version>
 										</requireMavenVersion>
 										<requirePluginVersions>
 											<message><![CDATA[Found plugins without fixed release version defined, build is not reproducible! Fix all plugin versions.]]></message>
