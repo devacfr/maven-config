@@ -707,20 +707,6 @@
 					</dependencies>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>${maven-gpg-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>sign</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>sign</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
 					<groupId>pl.project13.maven</groupId>
 					<artifactId>git-commit-id-plugin</artifactId>
 					<version>${maven-git-commit-id-plugin.version}</version>
@@ -1323,9 +1309,10 @@
 		<profile>
 			<id>gpg</id>
 			<activation>
-				<!-- To enable gpg signature profile, define property -Dgpg.passphrase=phrase -->
+				<!-- To enable gpg signature profile, only during release phase -->
 				<property>
-					<name>gpg.passphrase</name>
+					<name>performRelease</name>
+					<value>true</true>
 				</property>
 			</activation>
 			<build>
@@ -1333,6 +1320,16 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
