@@ -162,6 +162,7 @@
 		<maven-failsafe-plugin.version>2.16</maven-failsafe-plugin.version>
 		<maven-git-commit-id-plugin.version>2.1.9</maven-git-commit-id-plugin.version>
 		<maven-install-plugin.version>2.3.1</maven-install-plugin.version>
+		<maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
 		<maven-release-plugin.version>2.5</maven-release-plugin.version>
 		<maven-remote-resources-plugin.version>1.5</maven-remote-resources-plugin.version>
 		<maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
@@ -718,6 +719,23 @@
 						</dependency>
 					</dependencies>
 				</plugin>
+
+				<plugin>
+	                <groupId>external.atlassian.jgitflow</groupId>
+	                <artifactId>jgitflow-maven-plugin</artifactId>
+	                <version>${maven-jgitflow-plugin.version}</version>
+	                <configuration>
+	                    <flowInitContext>
+	                        <masterBranchName>master</masterBranchName>
+	                        <developBranchName>develop</developBranchName>
+	                        <featureBranchPrefix>feature/</featureBranchPrefix>
+	                        <releaseBranchPrefix>release/</releaseBranchPrefix>
+	                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+	                        <versionTagPrefix>v</versionTagPrefix>
+	                    </flowInitContext>
+	                    <autoVersionSubmodules>true</autoVersionSubmodules>
+	                </configuration>
+	            </plugin>
 				<plugin>
 					<groupId>pl.project13.maven</groupId>
 					<artifactId>git-commit-id-plugin</artifactId>
