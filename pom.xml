@@ -44,7 +44,6 @@
 	</prerequisites>
 
 	<properties>
-		
 		<!-- ================================================================================ -->
 		<!-- Global Properties -->
 		<!-- ================================================================================ -->
@@ -53,13 +52,13 @@
 		<aggregate>false</aggregate>
 
 		<!-- minimum maven required version -->
-		<maven.version>3.2.5</maven>
+		<maven.version>3.2.5</maven.version>
 		<!-- Set default encoding to UTF-8 (most plugins) -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
 		<!-- Set compiler source and target versions (m-compiler-p) -->
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
 
 		<!-- Set compiler to be more verbose (m-compiler-p) -->
@@ -119,7 +118,7 @@
 		<!-- External dependencies versions. -->
 		<!-- ================================================================================ -->
 		<guava.version>18.0</guava.version>
-		<commons-io.version>2.1</commons-io.version>
+		<commons-io.version>2.4</commons-io.version>
 		<commons-lang.version>2.4</commons-lang.version>
 		<commons-codec.version>1.4</commons-codec.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
@@ -127,7 +126,7 @@
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<guice.version>3.0</guice.version>
 		<javax.inject.version>1</javax.inject.version>
-		<joda-time.version>2.3</joda-time.version>
+		<joda-time.version>2.8.1</joda-time.version>
 		<jsr250.version>1.0</jsr250.version>
 		<jsr311.version>1.0</jsr311.version>
 		<log4j.version>1.2.14</log4j.version>
@@ -135,7 +134,7 @@
 		<restlet.version>2.0.4</restlet.version>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<servlet.version>2.5</servlet.version>
-		<slf4j.version>1.6.2</slf4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
 		<velocity.version>1.7</velocity.version>
 		<xerces.version>2.8.1</xerces.version>
 
@@ -144,16 +143,18 @@
 		<!-- ================================================================================ -->
 		<easymock.version>3.2</easymock.version>
 		<mockito.version>1.9.5</mockito.version>
-		<junit.version>4.8.1</junit.version>
+		<junit.version>4.12</junit.version>
 		<junit-addons.version>1.4</junit-addons.version>
 		<findbugs.version>3.0.0</findbugs.version>
 		<powermock.version>1.5.6</powermock.version>
+		<hamcrest.version>1.3</hamcrest.version>
 
 		<!-- ================================================================================ -->
 		<!-- Core plugin dependencies versions. -->
 		<!-- ================================================================================ -->
 		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<maven-build-helper-maven-plugin.version>1.7</maven-build-helper-maven-plugin.version>
 		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
 		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
 		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
@@ -161,16 +162,16 @@
 		<maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
 		<maven-failsafe-plugin.version>2.16</maven-failsafe-plugin.version>
 		<maven-git-commit-id-plugin.version>2.1.9</maven-git-commit-id-plugin.version>
+		<maven-github-site-maven-plugin.version>0.10</maven-github-site-maven-plugin.version>
 		<maven-install-plugin.version>2.3.1</maven-install-plugin.version>
 		<maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
 		<maven-release-plugin.version>2.5</maven-release-plugin.version>
 		<maven-remote-resources-plugin.version>1.5</maven-remote-resources-plugin.version>
 		<maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
 		<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
-		<maven-site-plugin.version>3.3</maven-site-plugin.version>
-		<maven-github-site-maven-plugin.version>0.10</maven-github-site-maven-plugin.version>
+		<maven-plugin-plugin.version>3.3</maven-plugin-plugin.version>
+		<maven-site-plugin.version>3.4</maven-site-plugin.version>
 		<maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
-		<maven-build-helper-maven-plugin.version>1.7</maven-build-helper-maven-plugin.version>
 
 		<!-- ================================================================================ -->
 		<!-- Packaging plugins -->
@@ -183,20 +184,21 @@
 		<!-- ================================================================================ -->
 		<!-- Reporting plugins (only used subset) -->
 		<!-- ================================================================================ -->
-		<maven-reflow-skin.version>1.1.1</maven-reflow-skin.version>
 		<maven-cobertura-plugin.version>2.6</maven-cobertura-plugin.version>
-		<maven-checkstyle-plugin.version>2.11</maven-checkstyle-plugin.version>
+		<maven-changes-plugin.version>2.11</maven-changes-plugin.version>
+		<maven-checkstyle-plugin.version>2.14</maven-checkstyle-plugin.version>
 		<maven-clirr-plugin.version>2.6.1</maven-clirr-plugin.version>
 		<maven-changes-plugin.version>2.9</maven-changes-plugin.version>
-		<maven-clover2-plugin.version>3.2.2</maven-clover2-plugin.version>
+		<maven-clover2-plugin.version>4.0.4</maven-clover2-plugin.version>
 		<maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
 		<jdepend-maven-plugin.version>2.0-beta-2</jdepend-maven-plugin.version>
 		<findbugs-maven-plugin.version>3.0.0</findbugs-maven-plugin.version>
-		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
-		<maven-pmd-plugin.version>3.2</maven-pmd-plugin.version>
+		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+		<maven-pmd-plugin.version>3.4</maven-pmd-plugin.version>
+		<maven-reflow-skin.version>1.1.1</maven-reflow-skin.version>
 		<maven-rat-plugin.version>0.8</maven-rat-plugin.version>
 		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
-		<maven-surefire-report-plugin.version>2.16</maven-surefire-report-plugin.version>
+		<maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
 		<taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
 
 	</properties>
@@ -327,6 +329,53 @@
 				<version>${joda-time.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.google.code.findbugs</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>${findbugs.version}</version>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet.version}</version>
+				<optional>true</optional>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- ================================================================================ -->
+			<!-- Logger dependencies -->
+			<!-- ================================================================================ -->
+			<dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
@@ -337,6 +386,11 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
             </dependency>
+
+			<!-- ================================================================================ -->
+			<!-- Test dependencies -->
+			<!-- ================================================================================ -->
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
@@ -367,6 +421,18 @@
 				<version>${easymock.version}</version>
 			</dependency>
 			<dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-library</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
 				<version>${mockito.version}</version>
@@ -381,26 +447,10 @@
 				<artifactId>powermock-api-mockito</artifactId>
 				<version>${powermock.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>com.google.code.findbugs</groupId>
-				<artifactId>jsr305</artifactId>
-				<version>${findbugs.version}</version>
-				<scope>provided</scope>
-				<optional>true</optional>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>${servlet.version}</version>
-				<optional>true</optional>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j.version}</version>
-			</dependency>
+
+			<!-- ================================================================================ -->
 			<!-- Spring dependency -->
+			<!-- ================================================================================ -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
@@ -570,6 +620,11 @@
 						<version>${velocity.version}</version>
 					</dependency>
 					<dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-markdown</artifactId>
+                        <version>1.6</version>
+                    </dependency>
+					<dependency>
 						<groupId>net.trajano.wagon</groupId>
 						<artifactId>wagon-git</artifactId>
 						<version>1.0.0</version>
@@ -649,7 +704,7 @@
 						<dependency>
 							<groupId>org.cfr</groupId>
 							<artifactId>maven-checker</artifactId>
-							<version>7-SNAPSHOT</version>
+							<version>${project.version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -682,7 +737,7 @@
 							<dependency>
 								<groupId>org.cfr</groupId>
 								<artifactId>maven-checker</artifactId>
-								<version>5-SNAPSHOT</version>
+								<version>${project.version}</version>
 							</dependency>
 						</dependencies>
 					</configuration>
@@ -715,7 +770,7 @@
 						<dependency>
 							<groupId>org.cfr</groupId>
 							<artifactId>maven-checker</artifactId>
-							<version>7-SNAPSHOT</version>
+							<version>${project.version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -745,6 +800,7 @@
 							<goals>
 								<goal>revision</goal>
 							</goals>
+							<phase>validate</phase>
 						</execution>
 					</executions>
 					<configuration>
@@ -752,7 +808,7 @@
 						<dateFormat>dd.MM.yyyy'@'HH:mm:ss z</dateFormat> <!-- that's the default value -->
 						<verbose>true</verbose> <!-- false is default for this -->
 						<dotGitDirectory>${project.basedir}/.git</dotGitDirectory> <!-- required, you have to specify this path -->
-						<skipPoms>true</skipPoms>
+						<runOnlyOnce>true</runOnlyOnce>
 						<gitDescribe>
 							<!-- don't generate the describe property -->
 							<!-- <skip>false</skip> -->
@@ -773,6 +829,20 @@
 						</gitDescribe>
 					</configuration>
 				</plugin>
+				<!-- <plugin> -->
+	            <!-- <groupId>org.devacfr.jgitversion</groupId> -->
+	            <!-- <artifactId>jgitversion-maven-plugin</artifactId> -->
+	            <!-- <version>${maven-jgitversion-plugin.version}</version> -->
+	            <!-- <executions> -->
+	            <!-- <execution> -->
+	            <!-- <id>jgitversion-revision</id> -->
+	            <!-- <goals> -->
+	            <!-- <goal>revision</goal> -->
+	            <!-- </goals> -->
+	            <!-- <phase>validate</phase> -->
+	            <!-- </execution> -->
+	            <!-- </executions> -->
+	            <!-- </plugin> -->
 
 				<plugin>
 					<artifactId>maven-remote-resources-plugin</artifactId>
@@ -905,22 +975,30 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>release-offline</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-						<version>${maven-release-plugin.version}</version>
-						<configuration>
-							<pushChanges>false</pushChanges>
-							<localCheckout>true</localCheckout>
-							<remoteTagging>false</remoteTagging>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
+            <id>release-offline</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>${maven-release-plugin.version}</version>
+                        <configuration>
+                            <!-- release locally -->
+                            <pushChanges>false</pushChanges>
+                            <remoteTagging>false</remoteTagging>
+                            <localCheckout>true</localCheckout>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>external.atlassian.jgitflow</groupId>
+                        <artifactId>jgitflow-maven-plugin</artifactId>
+                        <configuration>
+                            <pushReleases>false</pushReleases>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 		<profile>
 			<id>development</id>
 		</profile>
@@ -985,12 +1063,38 @@
 		<profile>
 			<id>reporting</id>
 			<reporting>
+		        <excludeDefaults>true</excludeDefaults>
 				<!-- List of plugins in alphabetical order -->
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-project-info-reports-plugin</artifactId>
 						<version>${maven-project-info-reports-plugin.version}</version>
+						<inherited>false</inherited>
+		                <configuration>
+		                    <showAvatarImages>true</showAvatarImages>
+		                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+		                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+		                </configuration>
+		                <reportSets>
+		                    <reportSet>
+		                        <reports>
+		                            <report>index</report>
+		                            <report>project-team</report>
+		                            <report>modules</report>
+		                            <report>plugins</report>
+		                            <report>cim</report>
+		                            <report>scm</report>
+		                            <report>license</report>
+		                            <report>plugin-management</report>
+		                            <report>distribution-management</report>
+		                            <report>summary</report>
+		                            <!-- <report>mailing-list</report> -->
+		                            <report>issue-tracking</report>
+		                            <report>dependencies</report>
+		                        </reports>
+		                    </reportSet>
+		                </reportSets>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -1342,7 +1446,7 @@
 				<!-- To enable gpg signature profile, only during release phase -->
 				<property>
 					<name>performRelease</name>
-					<value>true</true>
+					<value>true</value>
 				</property>
 			</activation>
 			<build>
