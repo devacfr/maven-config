@@ -38,7 +38,7 @@
     <rule ref="rulesets/java/controversial.xml/DoNotCallGarbageCollectionExplicitly">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyFinallyBlock">
+    <rule ref="rulesets/java/empty.xml/EmptyFinallyBlock">
         <priority>1</priority>
     </rule>
     <rule ref="rulesets/java/codesize.xml/ExcessiveClassLength">
@@ -146,10 +146,10 @@
     <rule ref="rulesets/java/migrating.xml/ShortInstantiation">
         <priority>1</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptySynchronizedBlock">
+    <rule ref="rulesets/java/empty.xml/EmptySynchronizedBlock">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyWhileStmt">
+    <rule ref="rulesets/java/empty.xml/EmptyWhileStmt">
         <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/design.xml/EqualsNull">
@@ -164,7 +164,7 @@
     <rule ref="rulesets/java/basic.xml/UnconditionalIfStatement">
         <priority>1</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/UselessOperationOnImmutable">
+    <rule ref="rulesets/java/unnecessary.xml/UselessOperationOnImmutable">
         <priority>1</priority>
     </rule>
     <rule ref="rulesets/java/logging-jakarta-commons.xml/GuardDebugLogging">
@@ -209,9 +209,6 @@
     <rule ref="rulesets/java/javabeans.xml/MissingSerialVersionUID">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/controversial.xml/NullAssignment">
-        <priority>5</priority>
-    </rule>
     <rule ref="rulesets/java/design.xml/ReturnEmptyArrayRatherThanNull">
         <priority>5</priority>
     </rule>
@@ -230,19 +227,19 @@
     <rule ref="rulesets/java/design.xml/BadComparison">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyInitializer">
+    <rule ref="rulesets/java/empty.xml/EmptyInitializer">
         <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/design.xml/CompareObjectsWithEquals">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyStatementNotInLoop">
+    <rule ref="rulesets/java/empty.xml/EmptyStatementNotInLoop">
         <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/design.xml/EmptyMethodInAbstractClassShouldBeAbstract">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyTryBlock">
+    <rule ref="rulesets/java/empty.xml/EmptyTryBlock">
         <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/strings.xml/StringToString">
@@ -287,10 +284,10 @@
     <rule ref="rulesets/java/design.xml/DefaultLabelNotLastInSwitchStmt">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptySwitchStatements">
+    <rule ref="rulesets/java/empty.xml/EmptySwitchStatements">
         <priority>3</priority>
     </rule>
-    <rule ref="rulesets/java/basic.xml/EmptyStaticInitializer">
+    <rule ref="rulesets/java/empty.xml/EmptyStaticInitializer">
         <priority>3</priority>
     </rule>
     <rule ref="rulesets/java/finalizers.xml/EmptyFinalizer">
