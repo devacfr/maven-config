@@ -1,4 +1,1 @@
-*.java  text filter=tabspace
-*.xml	text filter=tabspace2
-*.md	text
-*.txt	text
+*.xml    text
