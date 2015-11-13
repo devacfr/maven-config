@@ -13,42 +13,41 @@
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.cfr</groupId>
-        <artifactId>maven-config</artifactId>
-        <version>7-SNAPSHOT</version>
-    </parent>
-    <artifactId>maven-legal</artifactId>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.cfr</groupId>
+    <artifactId>maven-config</artifactId>
+    <version>7-SNAPSHOT</version>
+  </parent>
+  <artifactId>maven-legal</artifactId>
 
-    <name>devacfr License</name>
+  <name>devacfr License</name>
 
-    <properties>
-        <aggregate>false</aggregate>
-    </properties>
+  <properties>
+    <aggregate>false</aggregate>
+  </properties>
 
-    <build>
-        <resources>
-            <!-- replace variables here, as maven-remote-resources-plugin 
-                is not always used to include stuff -->
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-remote-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>bundle</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <resources>
+      <!-- replace variables here, as maven-remote-resources-plugin is not always used to include stuff -->
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>bundle</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
