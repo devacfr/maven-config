@@ -460,6 +460,13 @@
   </dependencyManagement>
 
   <build>
+    <extensions>
+      <extension>
+        <groupId>org.cfr</groupId>
+        <artifactId>maven-checker</artifactId>
+        <version>7-SNAPSHOT</version>
+      </extension>
+    </extensions>
     <plugins>
       <!-- Core Plugins -->
       <plugin>
@@ -636,29 +643,22 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
           <version>${maven-checkstyle-plugin.version}</version>
-          <configuration>
-            <!-- Corporate specific rules -->
-            <configLocation>/devacfr-checkstyle.xml</configLocation>
-            <includeResources>false</includeResources>
-            <includeTestResources>false</includeTestResources>
-            <excludes>**/src/test/**/*</excludes>
-            <headerLocation>/checkstyle-header.txt</headerLocation>
-          </configuration>
           <executions>
             <execution>
               <phase>process-sources</phase>
               <goals>
                 <goal>check</goal>
               </goals>
+              <configuration>
+                <!-- Corporate specific rules -->
+                <configLocation>/devacfr-checkstyle.xml</configLocation>
+                <includeResources>false</includeResources>
+                <includeTestResources>false</includeTestResources>
+                <excludes>**/src/test/**/*</excludes>
+                <headerLocation>checkstyle-header.txt</headerLocation>
+              </configuration>
             </execution>
           </executions>
-          <dependencies>
-            <dependency>
-              <groupId>org.cfr</groupId>
-              <artifactId>maven-checker</artifactId>
-              <version>7-SNAPSHOT</version>
-            </dependency>
-          </dependencies>
         </plugin>
 
         <plugin>
@@ -669,7 +669,7 @@
             <!-- Corporate specific rules -->
             <threshold>Normal</threshold>
             <effort>Default</effort>
-            <excludeFilterFile>/devacfr-findbugs-exclude-filter.xml</excludeFilterFile>
+            <excludeFilterFile>devacfr-findbugs-exclude-filter.xml</excludeFilterFile>
             <!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
             <findbugsXmlOutput>true</findbugsXmlOutput>
             <!-- Configures the directory in which the XML report is created -->
@@ -685,46 +685,32 @@
                 </goals>
               </execution>
             </executions>
-            <dependencies>
-              <dependency>
-                <groupId>org.cfr</groupId>
-                <artifactId>maven-checker</artifactId>
-                <version>7-SNAPSHOT</version>
-              </dependency>
-            </dependencies>
           </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>${maven-pmd-plugin.version}</version>
-          <configuration>
-            <linkXref>true</linkXref>
-            <sourceEncoding>${project.build.encoding}</sourceEncoding>
-            <minimumTokens>30</minimumTokens>
-            <targetJdk>${compiler.target}</targetJdk>
-            <failOnViolation>false</failOnViolation>
-            <!-- TODO make it 'true' when we will be ready -->
-            <failurePriority>2</failurePriority>
-            <rulesets>
-              <ruleset>/devacfr-pmd.xml</ruleset>
-            </rulesets>
-          </configuration>
           <executions>
             <execution>
               <phase>process-sources</phase>
               <goals>
                 <goal>check</goal>
               </goals>
+              <configuration>
+                <linkXref>true</linkXref>
+                <sourceEncoding>${project.build.encoding}</sourceEncoding>
+                <minimumTokens>30</minimumTokens>
+                <targetJdk>${compiler.target}</targetJdk>
+                <failOnViolation>false</failOnViolation>
+                <!-- TODO make it 'true' when we will be ready -->
+                <failurePriority>2</failurePriority>
+                <rulesets>
+                  <ruleset>devacfr-pmd.xml</ruleset>
+                </rulesets>
+              </configuration>
             </execution>
           </executions>
-          <dependencies>
-            <dependency>
-              <groupId>org.cfr</groupId>
-              <artifactId>maven-checker</artifactId>
-              <version>7-SNAPSHOT</version>
-            </dependency>
-          </dependencies>
         </plugin>
 
         <plugin>

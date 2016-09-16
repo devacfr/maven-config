@@ -79,7 +79,7 @@ This Maven pom releases the project online with Git by default. Each generated t
 ```bash
 devacfr$ mvn release:clean release:prepare --batch-mode -DreleaseVersion=${release.version} -DdevelopmentVersion=${dev.version} 
 devacfr$ 
-devacfr$ mvm release:perform
+devacfr$ mvn release:perform
 ```
 
 Using batch mode `--batch-mode` with no other configuration will cause the Release Plugin to use default values for the release version, the SCM tag, and the next development version.
@@ -103,6 +103,7 @@ To reduce release problem with your SCM in beginning, you can activate the profi
 
 ```bash
 devacfr$ mvn release:clean release:prepare -Prelease-offline
+devacfr$ mvn release:release -Prelease-offline
 ```
 
 Once your configuration is stable, you will be able to release directly in your favorite SCM.
