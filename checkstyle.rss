@@ -19,11 +19,11 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>The global maven configuration project - Checkstyle report</title>
+    <title>maven-config - Checkstyle report</title>
     <link>http://devacfr.github.io/maven-config</link>
-    <description>The global maven configuration project - Checkstyle report</description>
+    <description>maven-config - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2014 Devacfr Corporation :)</copyright>
+    <copyright>&#169;2016 Devacfr Corporation :)</copyright>
     <item>
       <title>File: 0,
              Errors: 0,

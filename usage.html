@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Release notes | Maven Config</title>
+		<title>Usage | Maven Config</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -48,7 +48,7 @@
 		</script>
 		</head>
 
-	<body class="page-release-notes project-maven-config" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-usage project-maven-config" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -69,11 +69,11 @@
 									<li ><a href="doc/tips.html" title="Tips">Tips</a></li>
 								</ul>
 							</li>
-							<li class="dropdown">
+							<li class="dropdown active">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contribute <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li ><a href="license.html" title="License">License</a></li>
-									<li ><a href="usage.html" title="Usage">Usage</a></li>
+									<li class="active"><a href="" title="Usage">Usage</a></li>
 									<li ><a href="https://github.com/devacfr/maven-config/issues" title="Issues" class="externalLink">Issues</a></li>
 									<li ><a href="https://github.com/devacfr/maven-config/tree/master" title="Fork on GitHub" class="externalLink">Fork on GitHub</a></li>
 								</ul>
@@ -136,7 +136,7 @@
 			<ul class="breadcrumb">
 				<li><a href="index.html" title="Maven Config">Maven Config</a></li>
 				<li class="divider">/</li>
-				<li>Release notes</li>
+				<li>Usage</li>
 			</ul>
 		</div>
 		<hr class="toc-separator" />
@@ -150,50 +150,31 @@
 					</a>
 					<div class="nav-collapse collapse" id="toc-nav-collapse">
 						<ul id="toc" class="nav">
-						<li class="toplevel"><a href="#release_notes" title="Release notes">Release notes</a></li>
+						<li class="toplevel"><a href="#usage" title="Usage">Usage</a></li>
 						<li class="dropdown">
-							<a href="#Release_7" title="Release 7" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Release 7 <b class="caret"></b></a>
+							<a href="#Release_Management" title="Release Management" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Release Management <b class="caret"></b></a>
 							<ul class="dropdown-menu" role="menu">
 								<!-- Repeat the item, otherwise it is not clickable as the dropdown root -->
-								<li><a href="#Release_7" title="Release 7">Release 7</a></li>
+								<li><a href="#Release_Management" title="Release Management">Release Management</a></li>
 								<li class="divider"></li>
-								<li><a href="#Enhancement" title="Enhancement">Enhancement</a></li>
-								<li><a href="#Maintenance" title="Maintenance">Maintenance</a></li>
+								<li><a href="#Prepare_a_Release" title="Prepare a Release">Prepare a Release</a></li>
+								<li><a href="#Online_Release" title="Online Release">Online Release</a></li>
+								<li><a href="#Offline_Release" title="Offline Release">Offline Release</a></li>
 
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#Release_6" title="Release 6" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Release 6 <b class="caret"></b></a>
+							<a href="#Reporting_Configuration" title="Reporting Configuration" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Reporting Configuration <b class="caret"></b></a>
 							<ul class="dropdown-menu" role="menu">
 								<!-- Repeat the item, otherwise it is not clickable as the dropdown root -->
-								<li><a href="#Release_6" title="Release 6">Release 6</a></li>
+								<li><a href="#Reporting_Configuration" title="Reporting Configuration">Reporting Configuration</a></li>
 								<li class="divider"></li>
-								<li><a href="#Enhancement" title="Enhancement">Enhancement</a></li>
-								<li><a href="#Bug_fix" title="Bug fix">Bug fix</a></li>
+								<li><a href="#Aggregate_Reporting_Multi-module" title="Aggregate Reporting (Multi-module)">Aggregate Reporting (Multi-module)</a></li>
 
 							</ul>
 						</li>
-						<li class="dropdown">
-							<a href="#Release_5" title="Release 5" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Release 5 <b class="caret"></b></a>
-							<ul class="dropdown-menu" role="menu">
-								<!-- Repeat the item, otherwise it is not clickable as the dropdown root -->
-								<li><a href="#Release_5" title="Release 5">Release 5</a></li>
-								<li class="divider"></li>
-								<li><a href="#Enhancement" title="Enhancement">Enhancement</a></li>
-								<li><a href="#Maintenance" title="Maintenance">Maintenance</a></li>
-
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#Release_3" title="Release 3" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Release 3 <b class="caret"></b></a>
-							<ul class="dropdown-menu" role="menu">
-								<!-- Repeat the item, otherwise it is not clickable as the dropdown root -->
-								<li><a href="#Release_3" title="Release 3">Release 3</a></li>
-								<li class="divider"></li>
-								<li><a href="#Enhancement" title="Enhancement">Enhancement</a></li>
-
-							</ul>
-						</li>
+						<li class="toplevel"><a href="#Quality_and_Validation" title="Quality and Validation">Quality and Validation</a></li>
+						<li class="toplevel"><a href="#Distribution_Deployment" title="Distribution Deployment">Distribution Deployment</a></li>
 						</ul>
 					</div>
 				</div>
@@ -206,87 +187,173 @@
 		<div class="span12">
 			<div class="body-content">
 <div class="page-header">
- <h1 id="release_notes">Release notes</h1>
+ <h1 id="usage">Usage</h1>
 </div> 
-<p>The history of Maven config releases is documented below. For details of changes refer to the <a class="externalLink" href="http://github.com/devacfr/maven-config/issues?state=closed">project’s GitHub issues</a> or the <a href="github-report.html">GitHub report</a>.</p> 
-<div class="section"> 
- <h2 id="Release_7">Release 7</h2> 
- <div class="section"> 
-  <h3 id="Enhancement">Enhancement</h3> 
-  <ul> 
-   <li>Activate gpg sign only during releasing (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/14">#14</a>)</li> 
-   <li>Upgrade to maven 3.2.x (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/12">#12</a>)</li> 
-   <li>Add logback dependency (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/16">#16</a>)</li> 
-   <li>Add jgitflow dependency (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/17">#17</a>)</li> 
-   <li>Add java formatter using eclipse file format (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/18">#18</a>)</li> 
-   <li>Bundle up Legal resources as a remote-resource. (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/9">#9</a>)</li> 
-   <li>Guava upgrade to 18.0</li> 
-  </ul> 
- </div> 
- <div class="section"> 
-  <h3 id="Maintenance">Maintenance</h3> 
-  <ul> 
-   <li>Bumps Spring version to 4.2.5.RELEASE. (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/20">#20</a>)</li> 
-   <li>Remove Repositories reference from maven-config Pom’s (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/10">#10</a>)</li> 
-   <li>Remove unnecessary PMD rules</li> 
-   <li>Remove Atlassian dependencies</li> 
-   <li>Enforce using m2e-code-quality extension in Eclipse</li> 
-  </ul> 
+<p>This pom is the base line configuration of all <a class="externalLink" href="http://devacfr.github.io/">devacfr project</a>. There is divide in following section:</p> 
+<ul> 
+ <li><b>Dependencies Management</b>,</li> 
+ <li><b>Release Management</b>, describes necessary actions to release with <b>maven</b> in serenity.</li> 
+ <li><b>Quality and Validation</b>,</li> 
+ <li><b>Distribution Management</b>,</li> 
+</ul> 
+<p>This is a parent POM of all <a class="externalLink" href="http://devacfr.github.io/">devacfr</a> projects. To use this predefined maven over configuration, add it as parent :</p> 
+<div class="source"> 
+ <div class="source"> 
+  <pre>&lt;parent&gt;
+    &lt;groupId&gt;org.cfr&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-config&lt;/artifactId&gt;
+    &lt;version&gt;7&lt;/version&gt;
+&lt;/parent&gt;
+</pre> 
  </div> 
 </div> 
-<div class="section"> 
- <h2 id="Release_6">Release 6</h2> 
- <div class="section"> 
-  <h3 id="Enhancement">Enhancement</h3> 
-  <ul> 
-   <li>Add site deploy during release phase</li> 
-  </ul> 
- </div> 
- <div class="section"> 
-  <h3 id="Bug_fix">Bug fix</h3> 
-  <ul> 
-   <li>Fix deployment multi-module site on github (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/8">#8</a>) 
-    <ul> 
-     <li>Replace github:site-maven-plugin by wagon-git</li> 
-    </ul></li> 
-   <li>Remove deploy skip for maven-checker module (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/7">#7</a>)</li> 
-  </ul> 
+<p>Declare the repository for your project or for a parent project by updating the pom.xml file and adding the following code to the <tt>&lt;repositories&gt;</tt> section:</p> 
+<div class="source"> 
+ <div class="source"> 
+  <pre>&lt;repository&gt;
+    &lt;snapshots&gt;
+        &lt;enabled&gt;false&lt;/enabled&gt;
+    &lt;/snapshots&gt;
+    &lt;id&gt;jcenter&lt;/id&gt;
+    &lt;name&gt;JCenter Repository&lt;/name&gt;
+    &lt;url&gt;http://jcenter.bintray.com&lt;/url&gt;
+&lt;/repository&gt;
+</pre> 
  </div> 
 </div> 
-<div class="section"> 
- <h2 id="Release_5">Release 5</h2> 
- <div class="section"> 
-  <h3 id="Enhancement">Enhancement</h3> 
-  <ul> 
-   <li>Site deployment in github (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/3">#3</a>)</li> 
-  </ul> 
- </div> 
- <div class="section"> 
-  <h3 id="Maintenance">Maintenance</h3> 
-  <ul> 
-   <li>Documentation &amp; Review (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/4">#4</a>) 
-    <ul> 
-     <li>Adapt check style and pmd with specific rules</li> 
-     <li>Add Release Section in Usage documentation</li> 
-     <li>Clean and remove unnecessary code and information</li> 
-     <li>Make links in the site descriptor absolute to the project URL relativizeDecorationLinks=false in maven site plugin</li> 
-     <li>Correct bug location of java header license in checkstyle.xml file</li> 
-     <li>Add Mockito and PowerMock dependency.</li> 
-     <li>Add Cobertura coverage reporting (Conflict cglib dependency between easymock and cobertura (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/5">#5</a>)</li> 
-    </ul></li> 
-  </ul> 
-  <p>See <a class="externalLink" href="https://github.com/devacfr/maven-config/issues?q=milestone%3A5+is%3Aclosed">all GitHub issues for 5</a> for further details.</p> 
+<p>As an alternative, you can also declare the repository for all of your projects. Go to the directory on the local computer where you just install Maven. Open and edit <tt>conf/settings.xml</tt> file. Add to the &lt;profiles&gt; section the following code:</p> 
+<div class="source"> 
+ <div class="source"> 
+  <pre>&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;jcenter&lt;/id&gt;
+        &lt;repositories&gt;
+            &lt;repository&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+                &lt;id&gt;jcenter&lt;/id&gt;
+                &lt;name&gt;JCenter Repository&lt;/name&gt;
+                &lt;url&gt;http://jcenter.bintray.com&lt;/url&gt;
+            &lt;/repository&gt;
+        &lt;/repositories&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+&lt;activeProfiles&gt;
+    &lt;activeProfile&gt;jcenter&lt;/activeProfile&gt;
+&lt;/activeProfiles&gt;
+</pre> 
  </div> 
 </div> 
 <div class="section"> 
- <h2 id="Release_3">Release 3</h2> 
+ <h2 id="Release_Management">Release Management</h2> 
+ <p>This section explains how release <tt>maven-config</tt> exclusively. <tt>maven-config</tt> implements <tt>git-flow</tt> but doesn’t use it. for a complete description of release management configured in <tt>maven-config</tt>, see <a href="doc/contribute.html">Contribute Documentation</a>.</p> 
+ <p>This phase is is awfully easy since maven exists.</p> 
  <div class="section"> 
-  <h3 id="Enhancement">Enhancement</h3> 
+  <h3 id="Prepare_a_Release">Prepare a Release</h3> 
+  <p>Preparing a release goes through the following release phases:</p> 
   <ul> 
-   <li>Create profile to deploy distribution in github (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/1">#1</a>)</li> 
-   <li>Create bintray profile (<a class="externalLink" href="https://github.com/devacfr/maven-config/issues/2">#2</a>)</li> 
+   <li>Check that there are no uncommitted changes in the sources</li> 
+   <li>Check that there are no <i>SNAPSHOT</i> dependencies</li> 
+   <li>Change the version in the POMs from x-SNAPSHOT to a new version (you will be prompted for the versions to use)</li> 
+   <li>Transform the SCM information in the POM to include the final destination of the tag</li> 
+   <li>Run the project tests against the modified POMs to confirm everything is in working order</li> 
+   <li>Commit the modified POMs</li> 
+   <li>Tag the code in the SCM with a version name (this will be prompted for)</li> 
+   <li>Bump the version in the POMs to a new value y-SNAPSHOT (these values will also be prompted for)</li> 
+   <li>Commit the modified POMs</li> 
   </ul> 
-  <p>See <a class="externalLink" href="https://github.com/devacfr/maven-config/issues?q=milestone%3A3+is%3Aclosed">all GitHub issues for 3</a> for further details.</p> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Online_Release">Online Release</h3> 
+  <p>This Maven pom releases the project online with Git by default. Each generated tag are prefix with ‘<tt>v${project.version}</tt>’.</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>devacfr$ mvn release:clean release:prepare --batch-mode -DreleaseVersion=${release.version} -DdevelopmentVersion=${dev.version} 
+devacfr$ 
+devacfr$ mvn release:perform
+</pre> 
+   </div> 
+  </div> 
+  <p>Using batch mode <tt>--batch-mode</tt> with no other configuration will cause the Release Plugin to use default values for the release version, the SCM tag, and the next development version.</p> 
+  <p>The maven phase <tt>release</tt> appends the profile <tt>release</tt> and <tt>reporting</tt> during the execution changing the compilation configuration as <i>no debug</i> and <i>optimize</i>. The generated artifacts are deployed on the distribution server and the site with quality code reports is published on github.</p> 
+  <p>Whether the release failed, you are need rollback a release following action in order. You haven’t run <tt>release:clean</tt> on the project before rollback. This means that the backup files and the release descriptor from the previous release command still exists.</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>devacfr$ mvn release:rollback
+</pre> 
+   </div> 
+  </div> 
+  <p>When a release is rolled back, the following release phases are executed:</p> 
+  <ul> 
+   <li>all project POMs are reverted back to their pre-release state locally, and also in the SCM if the previous release command was able to successfully make changes in the SCM to the POMs. This is done by using the backup files created during<tt>release:prepare</tt>.</li> 
+   <li>The created branch/tag in SCM for the release is removed. <b>Note</b>: This is not yet implemented so you will need to manually remove the branch/tag from your SCM.</li> 
+  </ul> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Offline_Release">Offline Release</h3> 
+  <p>To reduce release problem with your SCM in beginning, you can activate the profile <tt>release-offline</tt>, because during the release preparation phase, a tag is created in the SCM and the modified POMs are committed.</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>devacfr$ mvn release:clean release:prepare -Prelease-offline
+devacfr$ mvn release:perform -Prelease-offline
+</pre> 
+   </div> 
+  </div> 
+  <p>Once your configuration is stable, you will be able to release directly in your favorite SCM.</p> 
+ </div> 
+</div> 
+<div class="section"> 
+ <h2 id="Reporting_Configuration">Reporting Configuration</h2> 
+ <p>The site generation use by default <a class="externalLink" href="http://andriusvelykis.github.io/reflow-maven-skin/">Reflow Maven Skin</a>. It is responsive Apache Maven skin to reflow the standard Maven site with a modern feel. <a class="externalLink" href="http://andriusvelykis.github.io/reflow-maven-skin/skin/">Full Usage &raquo;</a></p> 
+ <div class="section"> 
+  <h3 id="Aggregate_Reporting_Multi-module">Aggregate Reporting (Multi-module)</h3> 
+  <p>In Maven, the generation of reports are individual for each module. The aggregation on root site is possible. For this, set the <tt>aggregate</tt> property to <i>true</i>.</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>&lt;properties&gt;
+     ...
+        &lt;!-- Enable report aggregation --&gt;
+        &lt;aggregate&gt;true&lt;/aggregate&gt;
+     ...
+&lt;/properties&gt;
+</pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="section"> 
+ <h2 id="Quality_and_Validation">Quality and Validation</h2> 
+ <p>the profile <tt>reporting</tt> generates <i>Project Information</i> and <i>Project Reports</i> sections. The following command create site without deployment:</p> 
+ <div class="source"> 
+  <div class="source"> 
+   <pre>devacfr$ mvm clean site -Preporting
+</pre> 
+  </div> 
+ </div> 
+ <p>or for project with multi-module,</p> 
+ <div class="source"> 
+  <div class="source"> 
+   <pre>devacfr$ mvm clean site site:stage -Preporting
+</pre> 
+  </div> 
+ </div> 
+ <p>Mainly, The code quality reports are:</p> 
+ <ul> 
+  <li><b>Checkstyle Reports</b>, performs check style analysis.</li> 
+  <li><b>PMD and CDB Reports</b>, first is code analysis tool and second is Copy/Paste Detector tool.</li> 
+  <li><b>Findbugs</b>,.</li> 
+ </ul> 
+</div> 
+<div class="section"> 
+ <h2 id="Distribution_Deployment">Distribution Deployment</h2> 
+ <p>Only releases artificats are published in distribution </p> 
+ <p>Site is deployed on <b>GitHub Pages</b> </p> 
+ <div class="source"> 
+  <div class="source"> 
+   <pre>devacfr$ mvn site-deploy -Preporting
+</pre> 
+  </div> 
  </div> 
 </div>
 			</div>
@@ -310,8 +377,8 @@
 						<li >
 							<a href="https://github.com/devacfr/maven-config/tree/master" title="GitHub project" class="externalLink">GitHub project</a>
 						</li>
-						<li class="active">
-							<a href="#" title="Release notes">Release notes</a>
+						<li >
+							<a href="release-notes.html" title="Release notes">Release notes</a>
 						</li>
 					</ul>
 				</div>
@@ -321,8 +388,8 @@
 						<li >
 							<a href="license.html" title="License">License</a>
 						</li>
-						<li >
-							<a href="usage.html" title="Usage">Usage</a>
+						<li class="active">
+							<a href="#" title="Usage">Usage</a>
 						</li>
 						<li >
 							<a href="https://github.com/devacfr/maven-config/issues" title="Issues" class="externalLink">Issues</a>
