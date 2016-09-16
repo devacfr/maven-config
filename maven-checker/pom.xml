@@ -16,7 +16,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cfr</groupId>
   <artifactId>maven-checker</artifactId>
-  <version>7</version>
+  <version>8-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Checker Module contains all resources necessary to configure the maven checkstyle, pmd, findbugs plugins.
   </description>
