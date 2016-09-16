@@ -1,4 +1,11 @@
-# Configuration
+# Usage
+
+This pom is the base line configuration of all [devacfr project][devacfr]. There is divide in following section:
+
+* **Dependencies Management**,
+* **Release Management**, describes necessary actions to release with **maven** in serenity. 
+* **Quality and Validation**,
+* **Distribution Management**,
 
 This is a parent POM of all [devacfr][devacfr] projects. To use this predefined maven over configuration, add it as parent :
 
@@ -22,7 +29,7 @@ Declare the repository for your project or for a parent project by updating the 
     <url>http://jcenter.bintray.com</url>
 </repository>
 ```
-As an alternative, you can also declare the repository for all of your projects. Go to the directory on the local computer where you just install Maven. Open and edit `conf/settings.xml` file. Add to the <profiles> section the following code:
+As an alternative, you can also declare the repository for all of your projects. Go to the directory on the local computer where you just install Maven. Open and edit `conf/settings.xml` file. Add to the &lt;profiles&gt; section the following code:
 
 ```xml
 <profiles>
@@ -45,39 +52,9 @@ As an alternative, you can also declare the repository for all of your projects.
 </activeProfiles>
 ```
 
-## Reporting Configuration
-
-The site generation use by default [Reflow Maven Skin][reflow-home]. It is responsive Apache Maven skin to reflow the standard Maven site with a modern feel. [Full Usage &raquo;][reflow-usage]
-
-### Aggregate Reporting (Multi-module)
-
-In Maven, the generation of reports are individual for each module. The aggregation on root site is possible. For this, set the `aggregate` property to *true*.
-
-```xml
-<properties>
-     ...
-        <!-- Enable report aggregation -->
-        <aggregate>true</aggregate>
-     ...
-</properties>
-```
-
----
-
-
-# Usage
- 
-This pom is the base line configuration of all [devacfr project][devacfr]. There is divide in following section:
-
-* **Dependencies Management**,
-* **Release Management**, describes necessary actions to release with **maven** in serenity. 
-* **Quality and Validation**,
-* **Distribution Management**,
- 
-## Dependencies Management
-
-
 ## Release Management
+
+This section explains how release `maven-config` exclusively. `maven-config` implements `git-flow` but doesn't use it. for a complete description of release management configured in `maven-config`, see [Contribute Documentation][contribute].
 
 This phase is is awfully easy since maven exists.
 
@@ -130,6 +107,24 @@ devacfr$ mvn release:clean release:prepare -Prelease-offline
 
 Once your configuration is stable, you will be able to release directly in your favorite SCM.
 
+## Reporting Configuration
+
+The site generation use by default [Reflow Maven Skin][reflow-home]. It is responsive Apache Maven skin to reflow the standard Maven site with a modern feel. [Full Usage &raquo;][reflow-usage]
+
+### Aggregate Reporting (Multi-module)
+
+In Maven, the generation of reports are individual for each module. The aggregation on root site is possible. For this, set the `aggregate` property to *true*.
+
+```xml
+<properties>
+     ...
+        <!-- Enable report aggregation -->
+        <aggregate>true</aggregate>
+     ...
+</properties>
+```
+
+
 ## Quality and Validation
 
 the profile `reporting`  generates *Project Information* and *Project Reports*  sections.
@@ -164,6 +159,7 @@ devacfr$ mvn site-deploy -Preporting
 	
 
 [devacfr]: http://devacfr.github.io/
+[contribute]: doc/contribute.html
 [reflow-home]: http://andriusvelykis.github.io/reflow-maven-skin/
 [reflow-usage]: http://andriusvelykis.github.io/reflow-maven-skin/skin/
 [jcenter]:http://jcenter.bintray.com

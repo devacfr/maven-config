@@ -22,8 +22,9 @@
   </parent>
   <artifactId>maven-checker</artifactId>
 
-  <name>Maven Config Checker</name>
-
+  <name>${project.artifactId}</name>
+  <description>Checker Module contains all resources necessary to configure the maven checkstyle, pmd, findbugs plugins.
+  </description>
   <properties>
     <aggregate>false</aggregate>
   </properties>

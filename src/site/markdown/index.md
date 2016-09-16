@@ -10,12 +10,11 @@ This pom file structure is based on project [m4entreprise][m4entreprise] and con
 
 The code is [open source][maven-config-github] and licensed under [Apache license][apache-license].
 
-[Contribute][contribute] by reporting issues, suggesting new features, or forking the
+Contribute by reporting issues, suggesting new features, or forking the
 Git repository on GitHub and adding some good code!
 
 
-[maven-config-usage]: doc/index.html
+[maven-config-usage]: usage.html
 [m4entreprise]:https://code.google.com/p/m4enterprise/
 [apache-license]: http://www.apache.org/licenses/LICENSE-2.0
-[contribute]: contribute.html
-[maven-config-github]: http://github.com/decafr/maven-config/
+[maven-config-github]: http://github.com/devacfr/maven-config/

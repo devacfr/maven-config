@@ -8,11 +8,17 @@ The history of Maven config releases is documented below. For details of changes
 ## Release 7
 
 ### Enhancement
+- Activate gpg sign only during releasing ([&#35;14][issue-14])
+- Upgrade to maven 3.2.x ([&#35;12][issue-12])
+- Add logback dependency ([&#35;16][issue-16])
+- Add jgitflow dependency ([&#35;17][issue-17])
+- Add java formatter using eclipse file format ([&#35;18][issue-18])
 - Bundle up Legal resources as a remote-resource. ([&#35;9][issue-9])
 - Guava upgrade to 18.0
 
 
 ### Maintenance 
+- Bumps Spring version to 4.2.5.RELEASE. ([&#35;20][issue-20])
 - Remove Repositories reference from maven-config Pom's ([&#35;10][issue-10])
 - Remove unnecessary PMD rules
 - Remove Atlassian dependencies
@@ -22,6 +28,12 @@ The history of Maven config releases is documented below. For details of changes
 
 [issue-9]: https://github.com/devacfr/maven-config/issues/9
 [issue-10]: https://github.com/devacfr/maven-config/issues/10
+[issue-12]: https://github.com/devacfr/maven-config/issues/12
+[issue-14]: https://github.com/devacfr/maven-config/issues/14
+[issue-16]: https://github.com/devacfr/maven-config/issues/16
+[issue-17]: https://github.com/devacfr/maven-config/issues/17
+[issue-18]: https://github.com/devacfr/maven-config/issues/18
+[issue-20]: https://github.com/devacfr/maven-config/issues/20
 
 ## Release 6
 

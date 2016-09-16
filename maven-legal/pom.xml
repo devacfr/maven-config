@@ -22,8 +22,8 @@
   </parent>
   <artifactId>maven-legal</artifactId>
 
-  <name>devacfr License</name>
-
+  <name>${project.artifactId}</name>
+  <description>Legal Module contains the used license.</description>
   <properties>
     <aggregate>false</aggregate>
   </properties>
