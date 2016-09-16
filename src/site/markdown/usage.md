@@ -103,7 +103,7 @@ To reduce release problem with your SCM in beginning, you can activate the profi
 
 ```bash
 devacfr$ mvn release:clean release:prepare -Prelease-offline
-devacfr$ mvn release:release -Prelease-offline
+devacfr$ mvn release:perform -Prelease-offline
 ```
 
 Once your configuration is stable, you will be able to release directly in your favorite SCM.

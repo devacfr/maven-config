@@ -131,7 +131,7 @@
     <log4j.version>1.2.14</log4j.version>
     <logback.version>1.1.2</logback.version>
     <springframework.version>4.2.5.RELEASE</springframework.version>
-    <servlet.version>2.5</servlet.version>
+    <servlet.version>3.1</servlet.version>
     <slf4j.version>1.7.7</slf4j.version>
     <velocity.version>1.7</velocity.version>
     <xerces.version>2.8.1</xerces.version>
@@ -184,7 +184,7 @@
     <!-- ================================================================================ -->
     <maven-cobertura-plugin.version>2.6</maven-cobertura-plugin.version>
     <maven-changes-plugin.version>2.11</maven-changes-plugin.version>
-    <maven-checkstyle-plugin.version>2.14</maven-checkstyle-plugin.version>
+    <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
     <maven-clirr-plugin.version>2.6.1</maven-clirr-plugin.version>
     <maven-changes-plugin.version>2.9</maven-changes-plugin.version>
     <maven-clover2-plugin.version>4.0.4</maven-clover2-plugin.version>
@@ -460,13 +460,6 @@
   </dependencyManagement>
 
   <build>
-    <extensions>
-      <extension>
-        <groupId>org.cfr</groupId>
-        <artifactId>maven-checker</artifactId>
-        <version>7-SNAPSHOT</version>
-      </extension>
-    </extensions>
     <plugins>
       <!-- Core Plugins -->
       <plugin>
@@ -604,11 +597,17 @@
             <goals>
               <goal>jar</goal>
             </goals>
-            <configuration>
-              <additionalparam>-Xdoclint:none</additionalparam>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+          <!-- Default configuration for all reports -->
+          <links>
+            <link>http://docs.oracle.com/javase/8/docs/api/</link>
+            <link>https://docs.oracle.com/javaee/7/api/</link>
+          </links>
+          <detectLinks>true</detectLinks>
+          <additionalparam>-Xdoclint:none</additionalparam>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -628,94 +627,112 @@
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>${maven-surefire-report-plugin.version}</version>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>${maven-checkstyle-plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>checkstyle</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- Corporate specific rules -->
+          <configLocation>devacfr-checkstyle.xml</configLocation>
+          <includeResources>false</includeResources>
+          <includeTestResources>false</includeTestResources>
+          <excludes>**/src/test/**/*</excludes>
+          <headerLocation>checkstyle-header.txt</headerLocation>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.cfr</groupId>
+            <artifactId>maven-checker</artifactId>
+            <version>7-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>${findbugs-maven-plugin.version}</version>
+        <configuration>
+          <!-- Corporate specific rules -->
+          <threshold>Normal</threshold>
+          <effort>Default</effort>
+          <excludeFilterFile>devacfr-findbugs-exclude-filter.xml</excludeFilterFile>
+          <!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
+          <findbugsXmlOutput>true</findbugsXmlOutput>
+          <!-- Configures the directory in which the XML report is created -->
+          <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+          <xmlOutput>true</xmlOutput>
+          <executions>
+            <!-- Ensures that FindBugs inspects source code when project is compiled. -->
+            <execution>
+              <id>analyze-compile</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.cfr</groupId>
+            <artifactId>maven-checker</artifactId>
+            <version>7-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>${maven-pmd-plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <configuration>
+              <linkXref>true</linkXref>
+              <sourceEncoding>${project.build.encoding}</sourceEncoding>
+              <minimumTokens>30</minimumTokens>
+              <targetJdk>${compiler.target}</targetJdk>
+              <failOnViolation>false</failOnViolation>
+              <!-- TODO make it 'true' when we will be ready -->
+              <failurePriority>2</failurePriority>
+              <rulesets>
+                <ruleset>devacfr-pmd.xml</ruleset>
+              </rulesets>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.cfr</groupId>
+            <artifactId>maven-checker</artifactId>
+            <version>7-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
-          <version>${maven-antrun-plugin.version}
-                    </version>
+          <version>${maven-antrun-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>clirr-maven-plugin</artifactId>
           <version>${maven-clirr-plugin.version}</version>
         </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${maven-checkstyle-plugin.version}</version>
-          <executions>
-            <execution>
-              <phase>process-sources</phase>
-              <goals>
-                <goal>check</goal>
-              </goals>
-              <configuration>
-                <!-- Corporate specific rules -->
-                <configLocation>/devacfr-checkstyle.xml</configLocation>
-                <includeResources>false</includeResources>
-                <includeTestResources>false</includeTestResources>
-                <excludes>**/src/test/**/*</excludes>
-                <headerLocation>checkstyle-header.txt</headerLocation>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>${findbugs-maven-plugin.version}</version>
-          <configuration>
-            <!-- Corporate specific rules -->
-            <threshold>Normal</threshold>
-            <effort>Default</effort>
-            <excludeFilterFile>devacfr-findbugs-exclude-filter.xml</excludeFilterFile>
-            <!-- Enable XML output for reporting tools (Bamboo, Hudson) -->
-            <findbugsXmlOutput>true</findbugsXmlOutput>
-            <!-- Configures the directory in which the XML report is created -->
-            <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
-            <xmlOutput>true</xmlOutput>
-            <executions>
-              <!-- Ensures that FindBugs inspects source code when project is compiled. -->
-              <execution>
-                <id>analyze-compile</id>
-                <phase>compile</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-            </executions>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-pmd-plugin</artifactId>
-          <version>${maven-pmd-plugin.version}</version>
-          <executions>
-            <execution>
-              <phase>process-sources</phase>
-              <goals>
-                <goal>check</goal>
-              </goals>
-              <configuration>
-                <linkXref>true</linkXref>
-                <sourceEncoding>${project.build.encoding}</sourceEncoding>
-                <minimumTokens>30</minimumTokens>
-                <targetJdk>${compiler.target}</targetJdk>
-                <failOnViolation>false</failOnViolation>
-                <!-- TODO make it 'true' when we will be ready -->
-                <failurePriority>2</failurePriority>
-                <rulesets>
-                  <ruleset>devacfr-pmd.xml</ruleset>
-                </rulesets>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
         <plugin>
           <groupId>external.atlassian.jgitflow</groupId>
           <artifactId>jgitflow-maven-plugin</artifactId>
@@ -986,7 +1003,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
-            <inherited>true</inherited>
             <reportSets>
               <reportSet>
                 <id>non-aggregate</id>
@@ -1028,14 +1044,8 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>${maven-javadoc-plugin.version}</version>
             <configuration>
-              <!-- Default configuration for all reports -->
-              <links>
-                <link>http://docs.oracle.com/javase/6/docs/api/</link>
-                <link>http://java.sun.com/products/servlet/2.5/docs/servlet-2_5-mr2/</link>
-              </links>
-              <detectLinks>true</detectLinks>
+              <additionalparam>-Xdoclint:none</additionalparam>
             </configuration>
             <reportSets>
               <reportSet>
@@ -1124,9 +1134,6 @@
             <reportSets>
               <reportSet>
                 <id>non-aggregate</id>
-                <configuration>
-                  <aggregate>false</aggregate>
-                </configuration>
                 <reports>
                   <report>cpd</report>
                   <report>pmd</report>
