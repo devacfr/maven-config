@@ -12,13 +12,12 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.cfr</groupId>
   <artifactId>maven-config</artifactId>
-  <version>7-SNAPSHOT</version>
+  <version>7</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
@@ -207,7 +206,7 @@
     <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
     <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
     <url>https://github.com/devacfr/maven-config/tree/master</url>
-    <tag>HEAD</tag>
+    <tag>v7</tag>
   </scm>
 
   <organization>
@@ -651,7 +650,7 @@
           <dependency>
             <groupId>org.cfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>7-SNAPSHOT</version>
+            <version>7</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -684,7 +683,7 @@
           <dependency>
             <groupId>org.cfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>7-SNAPSHOT</version>
+            <version>7</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -716,7 +715,7 @@
           <dependency>
             <groupId>org.cfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>7-SNAPSHOT</version>
+            <version>7</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -860,7 +859,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore></ignore>
+                    <ignore />
                   </action>
                 </pluginExecution>
               </pluginExecutions>
