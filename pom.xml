@@ -668,17 +668,17 @@
           <!-- Configures the directory in which the XML report is created -->
           <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
           <xmlOutput>true</xmlOutput>
-          <executions>
-            <!-- Ensures that FindBugs inspects source code when project is compiled. -->
-            <execution>
-              <id>analyze-compile</id>
-              <phase>compile</phase>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
         </configuration>
+        <executions>
+          <!-- Ensures that FindBugs inspects source code when project is compiled. -->
+          <execution>
+            <id>analyze-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
         <dependencies>
           <dependency>
             <groupId>org.cfr</groupId>
