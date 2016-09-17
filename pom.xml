@@ -596,6 +596,9 @@
             <goals>
               <goal>jar</goal>
             </goals>
+            <configuration>
+                <quiet>${quiet}</quiet>
+            </configuration>
           </execution>
         </executions>
         <configuration>

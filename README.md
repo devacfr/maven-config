@@ -10,7 +10,7 @@ This pom file structure is based on project [m4entreprise](https://code.google.c
 This project unifies the dependencies, release , distribution, reporting and code quality management. See [Usage Documentation][github.io-usage] for more detail.
 
 
-[github.io-usage]: http://devacfr.github.io/maven-config/doc/index.html
+[github.io-usage]: http://devacfr.github.io/maven-config/usage.html
 
 ## Distribution
 

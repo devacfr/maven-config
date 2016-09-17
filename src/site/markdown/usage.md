@@ -52,6 +52,35 @@ As an alternative, you can also declare the repository for all of your projects.
 </activeProfiles>
 ```
 
+## Properties
+
+`maven-config` create default properties or override default values that you can also override. this is the list of used properties:
+
+| **Global Properties**       | **Description**                        |
+|------------------------|------------------------------------------|
+| maven.version | The minimal maven required version (`3.2.5` by default) |
+
+| **Reporting Properties** | **Description**  |
+|------------------------|------------------------------------------|
+| aggregate       | Indicates whether the report must be aggregate module reports (`false` by default). |
+| project.reporting.outputEncoding | Sets default reporting encoding to UTF-8 by default. |
+| alwaysGenerateSurefireReport | Indicates whether **Surfire** report must be generate when there is no tests (`false` by default). |
+| quiet | Shuts off javadoc non-error and non-warning messages (`true` by default). |
+| detectOfflineLinks | Indicates whether links detection between modules during javadoc generation (`false` by default). |
+| dependency.locations.enabled | Indicates whether display the repository locations of the dependencies in project info reports (`false` by default).  |
+
+
+| **Compiler Properties**   | **Description**  |
+|------------------------|------------------------------------------|
+| project.build.sourceEncoding | Sets default source encoding to `UTF-8` by default. |
+| maven.compiler.target | Sets compiler source and target versions (`1.8` by default). |
+| maven.compiler.showDeprecation | Sets compiler to show depreciation (`true` by default). |
+| maven.compiler.showWarnings | Sets compiler to show warning (`true` by default). |
+
+
+
+
+
 ## Release Management
 
 This section explains how release `maven-config` exclusively. `maven-config` implements `git-flow` but doesn't use it. for a complete description of release management configured in `maven-config`, see [Contribute Documentation][contribute].
@@ -99,14 +128,18 @@ When a release is rolled back, the following release phases are executed:
 
 ### Offline Release
 
-To reduce release problem with your SCM in beginning, you can activate the profile `release-offline`, because during the release preparation phase, a tag is created in the SCM and the modified POMs are committed.
+To reduce release problem with your SCM in beginning, you can activate the profile `release-offline`, because during the release preparation phase, a tag is created in the SCM and the modified POMs are committed. the profile `release-offline` uses a local checkout instead of doing a checkout from the upstream repository, doesn't push changes to the upstream repository and tags locally the new release.
 
 ```bash
 devacfr$ mvn release:clean release:prepare -Prelease-offline
-devacfr$ mvn release:perform -Prelease-offline
 ```
 
 Once your configuration is stable, you will be able to release directly in your favorite SCM.
+
+```bash
+devacfr$ mvn release:perform -Prelease-offline
+```
+
 
 ## Reporting Configuration
 
