@@ -17,7 +17,7 @@
 
   <groupId>org.cfr</groupId>
   <artifactId>maven-config</artifactId>
-  <version>8</version>
+  <version>9-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
@@ -206,7 +206,7 @@
     <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
     <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
     <url>https://github.com/devacfr/maven-config/tree/master</url>
-    <tag>v8</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <organization>
@@ -653,7 +653,7 @@
           <dependency>
             <groupId>org.cfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>8</version>
+            <version>9-SNAPSHOT</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -686,7 +686,7 @@
           <dependency>
             <groupId>org.cfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>8</version>
+            <version>9-SNAPSHOT</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -718,7 +718,7 @@
           <dependency>
             <groupId>org.cfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>8</version>
+            <version>9-SNAPSHOT</version>
           </dependency>
         </dependencies>
       </plugin>
