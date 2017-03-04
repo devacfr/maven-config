@@ -13,7 +13,7 @@ This is a parent POM of all [devacfr][devacfr] projects. To use this predefined 
 <parent>
     <groupId>org.cfr</groupId>
     <artifactId>maven-config</artifactId>
-    <version>7</version>
+    <version>8</version>
 </parent>
 ```
 
