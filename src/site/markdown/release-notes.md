@@ -5,6 +5,20 @@ The history of Maven config releases is documented below. For details of changes
 [maven-config-issues]: http://github.com/devacfr/maven-config/issues?state=closed
 [github-report]: github-report.html
 
+## Release 8 (18 Sep 2016)
+
+### Maintenance 
+- Update documentation and fix error link. ([3837126](https://github.com/devacfr/maven-config/commit/38371268a70d0004e38ff08e20b6dc26967af3b3) )
+- Bump maven release plugin to 2.5.3 ([f4ca3f3](https://github.com/devacfr/maven-config/commit/f4ca3f379342aec8fe10142704fdb2bfe96c889b) )
+
+### Bug fix
+- Fix execution of m2e-code-quality FindBugs Maven Eclipse plugin. ([&#35;21][issue-21])
+
+See [all GitHub issues for 8][maven-config-8] for further details.
+
+[maven-config-8]: https://github.com/devacfr/maven-config/issues?utf8=%E2%9C%93&q=milestone%3A8%20is%3Aclosed%20
+[issue-21]: https://github.com/devacfr/maven-config/issues/21
+
 ## Release 7
 
 ### Enhancement
@@ -55,13 +69,13 @@ The history of Maven config releases is documented below. For details of changes
 
 ### Maintenance
 - Documentation & Review ([&#35;4][issue-4])
-	- Adapt check style and pmd with specific rules
-	- Add Release Section in Usage documentation
-	- Clean and remove unnecessary code and information
-	- Make links in the site descriptor absolute to the project URL relativizeDecorationLinks=false in maven site plugin
-	- Correct bug location of java header license in checkstyle.xml file
-	- Add Mockito and PowerMock dependency.
-	- Add Cobertura coverage reporting (Conflict cglib dependency between easymock and cobertura ([&#35;5][issue-5])
+- Adapt check style and pmd with specific rules
+- Add Release Section in Usage documentation
+- Clean and remove unnecessary code and information
+- Make links in the site descriptor absolute to the project URL relativizeDecorationLinks=false in maven site plugin
+- Correct bug location of java header license in checkstyle.xml file
+- Add Mockito and PowerMock dependency.
+- Add Cobertura coverage reporting (Conflict cglib dependency between easymock and cobertura ([&#35;5][issue-5])
 
 See [all GitHub issues for 5][maven-config-5] for further details.
 
