@@ -17,7 +17,7 @@
 
   <groupId>io.github.devacfr</groupId>
   <artifactId>maven-checker</artifactId>
-  <version>9</version>
+  <version>9-SNAPSHOT</version>
 
   <name>${project.artifactId}</name>
   <description>Checker Module contains all resources necessary to configure the maven checkstyle, pmd, findbugs plugins.
