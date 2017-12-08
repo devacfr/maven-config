@@ -14,7 +14,7 @@ This project unifies the dependencies, release , distribution, reporting and cod
 
 ## Distribution
 
-* Stable version [Release 8](https://bintray.com/devacfr/maven/maven-config/8)
+* Stable version [Release 9](https://bintray.com/devacfr/maven/maven-config/9)
 
 
 ## Contribution Policy
