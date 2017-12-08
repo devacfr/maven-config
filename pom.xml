@@ -12,7 +12,8 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.cfr</groupId>
@@ -130,7 +131,7 @@
     <log4j.version>1.2.14</log4j.version>
     <logback.version>1.1.2</logback.version>
     <springframework.version>4.2.5.RELEASE</springframework.version>
-    <servlet.version>3.1</servlet.version>
+    <servlet.version>3.1.0</servlet.version>
     <slf4j.version>1.7.7</slf4j.version>
     <velocity.version>1.7</velocity.version>
     <xerces.version>2.8.1</xerces.version>
@@ -334,12 +335,11 @@
       </dependency>
       <dependency>
         <groupId>javax.servlet</groupId>
-        <artifactId>servlet-api</artifactId>
+        <artifactId>javax.servlet-api</artifactId>
         <version>${servlet.version}</version>
         <optional>true</optional>
         <scope>provided</scope>
       </dependency>
-
       <!-- ================================================================================ -->
       <!-- Logger dependencies -->
       <!-- ================================================================================ -->
@@ -597,7 +597,7 @@
               <goal>jar</goal>
             </goals>
             <configuration>
-                <quiet>${quiet}</quiet>
+              <quiet>${quiet}</quiet>
             </configuration>
           </execution>
         </executions>
