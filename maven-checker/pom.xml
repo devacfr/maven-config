@@ -14,35 +14,14 @@
 <!-- limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cfr</groupId>
+
+  <groupId>io.github.devacfr</groupId>
   <artifactId>maven-checker</artifactId>
-  <version>9-SNAPSHOT</version>
+  <version>9</version>
+
   <name>${project.artifactId}</name>
   <description>Checker Module contains all resources necessary to configure the maven checkstyle, pmd, findbugs plugins.
   </description>
-
-  <properties>
-    <distribution.releaseRepositoryId>bintray</distribution.releaseRepositoryId>
-    <distribution.releaseRepositoryUrl>https://api.bintray.com/maven/devacfr/maven/maven-config/</distribution.releaseRepositoryUrl>
-    <distribution.snapshotRepositoryId>internal-repo</distribution.snapshotRepositoryId>
-    <distribution.snapshotRepositoryUrl>file:///Users/devacfr/Development/github/mvn-repo</distribution.snapshotRepositoryUrl>
-
-    <maven-site-plugin.version>3.4</maven-site-plugin.version>
-  </properties>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>${maven-site-plugin.version}</version>
-        <configuration>
-          <skip>true</skip>
-          <skipDeploy>true</skipDeploy>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
   <distributionManagement>
     <repository>
@@ -54,4 +33,68 @@
       <url>${distribution.snapshotRepositoryUrl}</url>
     </snapshotRepository>
   </distributionManagement>
+
+  <properties>
+    <distribution.releaseRepository.id>ossrh</distribution.releaseRepository.id>
+    <distribution.releaseRepositoryUrl>https://oss.sonatype.org/service/local/staging/deploy/maven2</distribution.releaseRepositoryUrl>
+    <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
+    <distribution.snapshotRepositoryUrl>https://oss.sonatype.org/content/repositories/snapshots</distribution.snapshotRepositoryUrl>
+
+    <maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
+    <maven-site-plugin.version>3.6</maven-site-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${maven-release-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+        <version>${maven-jgitflow-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>${maven-site-plugin.version}</version>
+        <configuration>
+          <skip>true</skip>
+          <skipDeploy>true</skipDeploy>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>release-offline</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <version>${maven-release-plugin.version}</version>
+            <configuration>
+              <!-- release locally -->
+              <pushChanges>false</pushChanges>
+              <remoteTagging>false</remoteTagging>
+              <localCheckout>true</localCheckout>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>external.atlassian.jgitflow</groupId>
+            <artifactId>jgitflow-maven-plugin</artifactId>
+            <configuration>
+              <pushReleases>false</pushReleases>
+              <noDeploy>true</noDeploy>
+              <eol>native</eol>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
