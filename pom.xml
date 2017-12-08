@@ -12,8 +12,7 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.devacfr</groupId>
@@ -23,13 +22,11 @@
 
   <name>${project.artifactId}</name>
   <description>Global maven configuration based on m4entreprise (https://code.google.com/p/m4enterprise/)</description>
-
-
-  <modules>
-    <module>maven-checker</module>
-    <module>maven-legal</module>
-  </modules>
-
+  <url>${site.url}</url>
+  <organization>
+    <name>${organization.name}</name>
+    <url>${organization.url}</url>
+  </organization>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -38,10 +35,61 @@
     </license>
   </licenses>
 
+  <developers>
+    <developer>
+      <id>devacfr</id>
+      <name>christophe friederich</name>
+      <email>christophefriederich@mac.com</email>
+      <timezone>Europe/Zurich</timezone>
+      <url>http://devacfr.github.io</url>
+    </developer>
+  </developers>
 
   <prerequisites>
     <maven>${maven.version}</maven>
   </prerequisites>
+
+  <modules>
+    <module>maven-checker</module>
+    <module>maven-legal</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
+    <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
+    <url>https://github.com/devacfr/maven-config/tree/master</url>
+    <tag>HEAD</tag>
+  </scm>
+  <issueManagement>
+    <system>${issue.system}</system>
+    <url>${issue.url}</url>
+  </issueManagement>
+  <ciManagement>
+    <system>${ci.system}</system>
+    <url>${ci.url}</url>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>${ci.contact-admin}</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <distributionManagement>
+    <repository>
+      <id>${distribution.releaseRepositoryId}</id>
+      <url>${distribution.releaseRepositoryUrl}</url>
+    </repository>
+    <snapshotRepository>
+      <id>${distribution.snapshotRepositoryId}</id>
+      <url>${distribution.snapshotRepositoryUrl}</url>
+    </snapshotRepository>
+    <site>
+      <id>${site.deploy.id}</id>
+      <name>Deployment through GitHub's site deployment plugin</name>
+      <url>${site.deploy.url}</url>
+    </site>
+  </distributionManagement>
 
   <properties>
     <!-- ================================================================================ -->
@@ -143,6 +191,7 @@
     <maven-remote-resources-plugin.version>1.5</maven-remote-resources-plugin.version>
     <maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
     <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
+    <tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
     <maven-plugin-plugin.version>3.3</maven-plugin-plugin.version>
     <maven-site-plugin.version>3.6</maven-site-plugin.version>
     <maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
@@ -178,65 +227,142 @@
 
   </properties>
 
-  <url>${site.url}</url>
-
-  <scm>
-    <connection>scm:git:git@github.com:devacfr/maven-config.git</connection>
-    <developerConnection>scm:git:git@github.com:devacfr/maven-config.git</developerConnection>
-    <url>https://github.com/devacfr/maven-config/tree/master</url>
-    <tag>HEAD</tag>
-  </scm>
-
-  <organization>
-    <name>${organization.name}</name>
-    <url>${organization.url}</url>
-  </organization>
-
-  <developers>
-    <developer>
-      <id>devacfr</id>
-      <name>christophe friederich</name>
-      <email>christophefriederich@mac.com</email>
-      <timezone>Europe/Zurich</timezone>
-      <url>http://devacfr.github.io</url>
-    </developer>
-  </developers>
-
-  <issueManagement>
-    <system>${issue.system}</system>
-    <url>${issue.url}</url>
-  </issueManagement>
-
-
-  <ciManagement>
-    <system>${ci.system}</system>
-    <url>${ci.url}</url>
-    <notifiers>
-      <notifier>
-        <configuration>
-          <address>${ci.contact-admin}</address>
-        </configuration>
-      </notifier>
-    </notifiers>
-  </ciManagement>
-
-  <distributionManagement>
-    <repository>
-      <id>${distribution.releaseRepositoryId}</id>
-      <url>${distribution.releaseRepositoryUrl}</url>
-    </repository>
-    <snapshotRepository>
-      <id>${distribution.snapshotRepositoryId}</id>
-      <url>${distribution.snapshotRepositoryUrl}</url>
-    </snapshotRepository>
-    <site>
-      <id>${site.deploy.id}</id>
-      <name>Deployment through GitHub's site deployment plugin</name>
-      <url>${site.deploy.url}</url>
-    </site>
-  </distributionManagement>
-
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${maven-antrun-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>clirr-maven-plugin</artifactId>
+          <version>${maven-clirr-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>${maven-jgitflow-plugin.version}</version>
+          <configuration>
+            <flowInitContext>
+              <masterBranchName>master</masterBranchName>
+              <developBranchName>develop</developBranchName>
+              <featureBranchPrefix>feature/</featureBranchPrefix>
+              <releaseBranchPrefix>release/</releaseBranchPrefix>
+              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+              <versionTagPrefix>v</versionTagPrefix>
+            </flowInitContext>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>pl.project13.maven</groupId>
+          <artifactId>git-commit-id-plugin</artifactId>
+          <version>${maven-git-commit-id-plugin.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>revision</goal>
+              </goals>
+              <phase>validate</phase>
+            </execution>
+          </executions>
+          <configuration>
+            <prefix>git</prefix> <!-- that's the default value -->
+            <dateFormat>dd.MM.yyyy'@'HH:mm:ss z</dateFormat> <!-- that's the default value -->
+            <verbose>true</verbose> <!-- false is default for this -->
+            <dotGitDirectory>${project.basedir}/.git</dotGitDirectory> <!-- required, you have to specify this path -->
+            <runOnlyOnce>true</runOnlyOnce>
+            <gitDescribe>
+              <!-- don't generate the describe property -->
+              <!-- <skip>false</skip> -->
+              <!-- if no tag was found "near" this commit, just print the commit's id instead, helpful when you always expect
+                this field to be not-empty -->
+              <always>true</always>
+              <!-- how many chars should be displayed as the commit object id? 7 is git's default, 0 has a special meaning
+                (see end of this README.md), and 40 is the maximum value here -->
+              <abbrev>7</abbrev>
+              <!-- when the build is triggered while the repo is in "dirty state", append this suffix -->
+              <dirty />
+              <!-- always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" format, even if "on" a tag. The
+                distance will always be 0 if you're "on" the tag. -->
+              <forceLongFormat>false</forceLongFormat>
+            </gitDescribe>
+          </configuration>
+        </plugin>
+
+
+        <plugin>
+          <artifactId>maven-remote-resources-plugin</artifactId>
+          <version>${maven-remote-resources-plugin.version}</version>
+          <configuration>
+            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+            <resourceBundles>
+              <resourceBundle>org.cfr:maven-legal:${project.version}</resourceBundle>
+            </resourceBundles>
+          </configuration>
+        </plugin>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build
+          itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <versionRange>[1.0,)</versionRange>
+                    <goals>
+                      <goal>transform</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <versionRange>[1.0,)</versionRange>
+                    <goals>
+                      <goal>enforce</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>
+                      org.apache.maven.plugins
+                    </groupId>
+                    <artifactId>
+                      maven-remote-resources-plugin
+                    </artifactId>
+                    <versionRange>
+                      [1.5,)
+                    </versionRange>
+                    <goals>
+                      <goal>bundle</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <!-- Core Plugins -->
       <plugin>
@@ -321,6 +447,20 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>tidy-maven-plugin</artifactId>
+        <version>${tidy-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <!-- Packaging plugins -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -491,141 +631,6 @@
         </dependencies>
       </plugin>
     </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-antrun-plugin</artifactId>
-          <version>${maven-antrun-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>clirr-maven-plugin</artifactId>
-          <version>${maven-clirr-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>external.atlassian.jgitflow</groupId>
-          <artifactId>jgitflow-maven-plugin</artifactId>
-          <version>${maven-jgitflow-plugin.version}</version>
-          <configuration>
-            <flowInitContext>
-              <masterBranchName>master</masterBranchName>
-              <developBranchName>develop</developBranchName>
-              <featureBranchPrefix>feature/</featureBranchPrefix>
-              <releaseBranchPrefix>release/</releaseBranchPrefix>
-              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-              <versionTagPrefix>v</versionTagPrefix>
-            </flowInitContext>
-            <autoVersionSubmodules>true</autoVersionSubmodules>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>pl.project13.maven</groupId>
-          <artifactId>git-commit-id-plugin</artifactId>
-          <version>${maven-git-commit-id-plugin.version}</version>
-          <executions>
-            <execution>
-              <goals>
-                <goal>revision</goal>
-              </goals>
-              <phase>validate</phase>
-            </execution>
-          </executions>
-          <configuration>
-            <prefix>git</prefix> <!-- that's the default value -->
-            <dateFormat>dd.MM.yyyy'@'HH:mm:ss z</dateFormat> <!-- that's the default value -->
-            <verbose>true</verbose> <!-- false is default for this -->
-            <dotGitDirectory>${project.basedir}/.git</dotGitDirectory> <!-- required, you have to specify this path -->
-            <runOnlyOnce>true</runOnlyOnce>
-            <gitDescribe>
-              <!-- don't generate the describe property -->
-              <!-- <skip>false</skip> -->
-              <!-- if no tag was found "near" this commit, just print the commit's id instead, helpful when you always expect
-                this field to be not-empty -->
-              <always>true</always>
-              <!-- how many chars should be displayed as the commit object id? 7 is git's default, 0 has a special meaning
-                (see end of this README.md), and 40 is the maximum value here -->
-              <abbrev>7</abbrev>
-              <!-- when the build is triggered while the repo is in "dirty state", append this suffix -->
-              <dirty />
-              <!-- always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" format, even if "on" a tag. The
-                distance will always be 0 if you're "on" the tag. -->
-              <forceLongFormat>false</forceLongFormat>
-            </gitDescribe>
-          </configuration>
-        </plugin>
-
-
-        <plugin>
-          <artifactId>maven-remote-resources-plugin</artifactId>
-          <version>${maven-remote-resources-plugin.version}</version>
-          <configuration>
-            <outputDirectory>${project.build.directory}/classes</outputDirectory>
-            <resourceBundles>
-              <resourceBundle>org.cfr:maven-legal:${project.version}</resourceBundle>
-            </resourceBundles>
-          </configuration>
-        </plugin>
-        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build
-          itself. -->
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>xml-maven-plugin</artifactId>
-                    <versionRange>[1.0,)</versionRange>
-                    <goals>
-                      <goal>transform</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <versionRange>[1.0,)</versionRange>
-                    <goals>
-                      <goal>enforce</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>
-                      org.apache.maven.plugins
-                    </groupId>
-                    <artifactId>
-                      maven-remote-resources-plugin
-                    </artifactId>
-                    <versionRange>
-                      [1.5,)
-                    </versionRange>
-                    <goals>
-                      <goal>bundle</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
   </build>
 
   <profiles>
@@ -1135,6 +1140,4 @@
       </properties>
     </profile>
   </profiles>
-
 </project>
-
