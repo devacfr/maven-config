@@ -9,11 +9,15 @@ The history of Maven config releases is documented below. For details of changes
 
 ### Maintenance 
 
+- Publish in Maven Central ([&#35;11][issue-11])
+- Add tidy plugin ([&#35;22][issue-22])
 - Remove all dependencies
 - Update groupId to io.github.devacfr for Maven Central deployment
 - Update distribution repository to Maven Central
 - Use io.github.devacfr.maven.skins:reflow-maven-skin instead lt.velykis.maven.skins:reflow-maven-skin.
 
+[issue-22]: https://github.com/devacfr/maven-config/issues/22
+[issue-11]: https://github.com/devacfr/maven-config/issues/11
 
 ## Release 8 (18 Sep 2016)
 

@@ -39,7 +39,7 @@
     <developer>
       <id>devacfr</id>
       <name>christophe friederich</name>
-      <email>christophefriederich@mac.com</email>
+      <email>devacfr@mac.com</email>
       <timezone>Europe/Zurich</timezone>
       <url>http://devacfr.github.io</url>
     </developer>
@@ -232,13 +232,14 @@
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-antrun-plugin</artifactId>
-          <version>${maven-antrun-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>clirr-maven-plugin</artifactId>
-          <version>${maven-clirr-plugin.version}</version>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
+          <configuration>
+            <tagNameFormat>v@{project.version}</tagNameFormat>
+            <useReleaseProfile>false</useReleaseProfile>
+            <goals>deploy</goals>
+            <arguments>-Prelease-profile,reporting,gpg ${arguments}</arguments>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>external.atlassian.jgitflow</groupId>
@@ -255,6 +256,16 @@
             </flowInitContext>
             <autoVersionSubmodules>true</autoVersionSubmodules>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${maven-antrun-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>clirr-maven-plugin</artifactId>
+          <version>${maven-clirr-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>pl.project13.maven</groupId>
@@ -299,7 +310,7 @@
           <configuration>
             <outputDirectory>${project.build.directory}/classes</outputDirectory>
             <resourceBundles>
-              <resourceBundle>org.cfr:maven-legal:${project.version}</resourceBundle>
+              <resourceBundle>io.github.devacfr:maven-legal:${project.version}</resourceBundle>
             </resourceBundles>
           </configuration>
         </plugin>
@@ -418,15 +429,12 @@
         <version>${maven-install-plugin.version}</version>
       </plugin>
       <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>${maven-release-plugin.version}</version>
-        <configuration>
-          <tagNameFormat>v@{project.version}</tagNameFormat>
-          <useReleaseProfile>false</useReleaseProfile>
-          <goals>deploy site-deploy</goals>
-          <arguments>-Prelease,reporting ${arguments}</arguments>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -559,9 +567,9 @@
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>org.cfr</groupId>
+            <groupId>io.github.devacfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>9-SNAPSHOT</version>
+            <version>${project.version}</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -592,9 +600,9 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>org.cfr</groupId>
+            <groupId>io.github.devacfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>9-SNAPSHOT</version>
+            <version>${project.version}</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -624,9 +632,9 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>org.cfr</groupId>
+            <groupId>io.github.devacfr</groupId>
             <artifactId>maven-checker</artifactId>
-            <version>9-SNAPSHOT</version>
+            <version>${project.version}</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -660,19 +668,15 @@
             <artifactId>jgitflow-maven-plugin</artifactId>
             <configuration>
               <pushReleases>false</pushReleases>
+              <noDeploy>true</noDeploy>
+              <eol>native</eol>
             </configuration>
           </plugin>
         </plugins>
       </build>
     </profile>
     <profile>
-      <id>development</id>
-    </profile>
-    <profile>
-      <id>integration</id>
-    </profile>
-    <profile>
-      <id>release</id>
+      <id>release-profile</id>
       <build>
         <plugins>
           <plugin>
@@ -1128,15 +1132,6 @@
       </activation>
       <properties>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
-      </properties>
-    </profile>
-    <profile>
-      <id>bintray</id>
-      <properties>
-        <distribution.releaseRepository.id>bintray</distribution.releaseRepository.id>
-        <distribution.releaseRepositoryUrl>https://api.bintray.com/maven/devacfr/maven/maven-config/;publish=1</distribution.releaseRepositoryUrl>
-        <distribution.snapshotRepositoryId>internal-repo</distribution.snapshotRepositoryId>
-        <distribution.snapshotRepositoryUrl>file:///Users/devacfr/Development/github/mvn-repo</distribution.snapshotRepositoryUrl>
       </properties>
     </profile>
   </profiles>
