@@ -35,14 +35,49 @@
   </distributionManagement>
 
   <properties>
+    <!-- ================================================================================ -->
+    <!-- Global Properties -->
+    <!-- ================================================================================ -->
+
+    <!-- minimum maven required version -->
+    <maven.version>3.2.5</maven.version>
+    <!-- Set default encoding to UTF-8 (most plugins) -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+
+
+    <!-- A comma separated list of locales (m-site-p) -->
+    <locales>en</locales>
+
+    <!-- ================================================================================ -->
+    <!-- POM Specific properties -->
+    <!-- ================================================================================ -->
+
+    <!-- Coporate properties -->
+    <organization.name>Devacfr Corporation :)</organization.name>
+    <organization.url>http://devacfr.github.io</organization.url>
+
+
+    <!-- Configure Distribution -->
+
     <distribution.releaseRepository.id>ossrh</distribution.releaseRepository.id>
     <distribution.releaseRepositoryUrl>https://oss.sonatype.org/service/local/staging/deploy/maven2</distribution.releaseRepositoryUrl>
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
     <distribution.snapshotRepositoryUrl>https://oss.sonatype.org/content/repositories/snapshots</distribution.snapshotRepositoryUrl>
 
+    <!-- Project properties -->
+    <issue.system>github</issue.system>
+    <issue.url>https://github.com/devacfr/maven-config/issues</issue.url>
+    <ci.url>https://github.com/devacfr/maven-config</ci.url>
+    <ci.system>Travis</ci.system>
+    <ci.contact-admin>christophefriederich@mac.om</ci.contact-admin>
+
+
     <maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
     <maven-site-plugin.version>3.6</maven-site-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+
   </properties>
 
   <build>
@@ -92,6 +127,31 @@
               <noDeploy>true</noDeploy>
               <eol>native</eol>
             </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>gpg</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${maven-gpg-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>sign</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <keyname>${gpg.keyname}</keyname>
+                  <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
