@@ -12,13 +12,13 @@
 <!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
 <!-- See the License for the specific language governing permissions and -->
 <!-- limitations under the License. -->
-<ruleset>
-  <description>PMD Plugin preferences rule set</description>
+<ruleset name="Java Rules" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
+  xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+  <description>Java Rule in PMD</description>
+
   <rule ref="rulesets/java/basic.xml/BooleanInstantiation">
     <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/logging-java.xml/LoggerIsNotStaticFinal">
-    <priority>3</priority>
   </rule>
   <rule ref="rulesets/java/design.xml/AbstractClassWithoutAbstractMethod">
     <priority>3</priority>
@@ -29,17 +29,8 @@
   <rule ref="rulesets/java/design.xml/AvoidProtectedFieldInFinalClass">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/codesize.xml/CyclomaticComplexity">
-    <priority>2</priority>
-    <properties>
-      <property name="reportLevel" value="15" />
-    </properties>
-  </rule>
   <rule ref="rulesets/java/controversial.xml/DoNotCallGarbageCollectionExplicitly">
     <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyFinallyBlock">
-    <priority>1</priority>
   </rule>
   <rule ref="rulesets/java/codesize.xml/ExcessiveClassLength">
     <priority>3</priority>
@@ -77,20 +68,8 @@
   <rule ref="rulesets/java/finalizers.xml/AvoidCallingFinalize">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/design.xml/AvoidDeeplyNestedIfStmts">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/controversial.xml/AvoidFinalLocalVariable">
-    <priority>4</priority>
-  </rule>
-  <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNullPointerException">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/java/naming.xml/BooleanGetMethodName">
     <priority>4</priority>
-  </rule>
-  <rule ref="rulesets/java/controversial.xml/DefaultPackage">
-    <priority>5</priority>
   </rule>
   <rule ref="rulesets/java/naming.xml/ClassNamingConventions">
     <priority>3</priority>
@@ -101,17 +80,11 @@
   <rule ref="rulesets/java/naming.xml/MethodWithSameNameAsEnclosingClass">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/naming.xml/ShortMethodName">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/java/naming.xml/PackageCase">
     <priority>4</priority>
   </rule>
   <rule ref="rulesets/java/braces.xml/WhileLoopsMustUseBraces">
     <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/AvoidInstanceofChecksInCatchClause">
-    <priority>3</priority>
   </rule>
   <rule ref="rulesets/java/basic.xml/AvoidMultipleUnaryOperators">
     <priority>3</priority>
@@ -146,12 +119,6 @@
   <rule ref="rulesets/java/migrating.xml/ShortInstantiation">
     <priority>1</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptySynchronizedBlock">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyWhileStmt">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/java/design.xml/EqualsNull">
     <priority>3</priority>
   </rule>
@@ -164,10 +131,7 @@
   <rule ref="rulesets/java/basic.xml/UnconditionalIfStatement">
     <priority>1</priority>
   </rule>
-  <rule ref="rulesets/java/unnecessary.xml/UselessOperationOnImmutable">
-    <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/logging-jakarta-commons.xml/GuardDebugLogging">
+  <rule ref="rulesets/java/logging-jakarta-commons.xml/GuardLogStatement">
     <priority>1</priority>
   </rule>
   <rule ref="rulesets/java/logging-java.xml/MoreThanOneLogger">
@@ -176,8 +140,11 @@
   <rule ref="rulesets/java/design.xml/AssignmentToNonFinalStatic">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/design.xml/AvoidConstantsInterface">
+  <rule ref="rulesets/java/design.xml/ConstantsInInterface">
     <priority>3</priority>
+    <properties>
+      <property name="ignoreIfHasMethods" value="true" />
+    </properties>
   </rule>
   <rule ref="rulesets/java/logging-java.xml/AvoidPrintStackTrace">
     <priority>1</priority>
@@ -227,19 +194,10 @@
   <rule ref="rulesets/java/design.xml/BadComparison">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyInitializer">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/java/design.xml/CompareObjectsWithEquals">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyStatementNotInLoop">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/java/design.xml/EmptyMethodInAbstractClassShouldBeAbstract">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyTryBlock">
     <priority>3</priority>
   </rule>
   <rule ref="rulesets/java/strings.xml/StringToString">
@@ -269,13 +227,7 @@
   <rule ref="rulesets/java/design.xml/CloseResource">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/j2ee.xml/DoNotUseThreads">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/java/basic.xml/DoubleCheckedLocking">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/AvoidSynchronizedAtMethodLevel">
     <priority>3</priority>
   </rule>
   <rule ref="rulesets/java/basic.xml/AvoidUsingOctalValues">
@@ -284,10 +236,28 @@
   <rule ref="rulesets/java/design.xml/DefaultLabelNotLastInSwitchStmt">
     <priority>3</priority>
   </rule>
+  <rule ref="rulesets/java/empty.xml/EmptyInitializer">
+    <priority>3</priority>
+  </rule>
   <rule ref="rulesets/java/empty.xml/EmptySwitchStatements">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyStaticInitializer">
+  <rule ref="rulesets/java/empty.xml/EmptyInitializer">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/empty.xml/EmptyTryBlock">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/empty.xml/EmptyStatementNotInLoop">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/empty.xml/EmptyFinallyBlock">
+    <priority>1</priority>
+  </rule>
+  <rule ref="rulesets/java/empty.xml/EmptySynchronizedBlock">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/empty.xml/EmptyWhileStmt">
     <priority>3</priority>
   </rule>
   <rule ref="rulesets/java/finalizers.xml/EmptyFinalizer">
